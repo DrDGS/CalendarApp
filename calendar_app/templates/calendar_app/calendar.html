@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Календарь</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .calendar-container {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+        
+        .calendar-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .month-year {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .nav-btn {
+            padding: 12px 25px;
+            background-color: #4a6fa5;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .nav-btn:hover {
+            background-color: #385d8a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .today-btn {
+            background-color: #27ae60;
+        }
+        
+        .today-btn:hover {
+            background-color: #219653;
+        }
+        
+        .calendar {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .calendar th {
+            padding: 20px 10px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #4a6fa5;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .calendar td {
+            padding: 20px 10px;
+            text-align: center;
+            height: 100px;
+            vertical-align: top;
+            border: 1px solid #f0f0f0;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .calendar td:hover:not(.empty) {
+            background-color: #f8fafc;
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .day-number {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+        }
+        
+        .today {
+            background-color: #e3f2fd;
+        }
+        
+        .today .day-number {
+            background-color: #2196f3;
+            color: white;
+        }
+        
+        .weekend {
+            color: #e74c3c;
+            background-color: #fff5f5;
+        }
+        
+        .empty {
+            background-color: #f9f9f9;
+        }
+        
+        .current-date-info {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-top: 20px;
+        }
+        
+        .current-date-info h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .current-date {
+            font-size: 1.5rem;
+            color: #2196f3;
+            font-weight: 700;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .calendar th, .calendar td {
+                padding: 10px 5px;
+                height: 70px;
+            }
+            
+            .day-number {
+                font-size: 1.1rem;
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+            }
+            
+            .month-year {
+                font-size: 1.5rem;
+            }
+            
+            .nav-btn {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Интерактивный календарь</h1>
+            <p>Сегодня: {{ today|date:"d E Y" }}</p>
+        </div>
+        
+        <div class="calendar-container">
+            <div class="calendar-nav">
+                <div class="month-year">{{ month_name }} {{ year }}</div>
+                <div class="nav-buttons">
+                    <a href="?year={{ prev_year }}&month={{ prev_month }}" class="nav-btn">← Предыдущий месяц</a>
+                    <a href="{% url 'calendar_app:calendar' %}" class="nav-btn today-btn">Сегодня</a>
+                    <a href="?year={{ next_year }}&month={{ next_month }}" class="nav-btn">Следующий месяц →</a>
+                </div>
+            </div>
+            
+            <table class="calendar">
+                <thead>
+                    <tr>
+                        {% for day in weekdays %}
+                            <th>{{ day }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for week in month_days %}
+                        <tr>
+                            {% for day in week %}
+                                {% if day == 0 %}
+                                    <td class="empty"></td>
+                                {% else %}
+                                    {% with current_date=date year=year month=month day=day %}
+                                        {% if day == today.day and month == today.month and year == today.year %}
+                                            <td class="today">
+                                                <div class="day-number">{{ day }}</div>
+                                                <div class="day-indicator">Сегодня</div>
+                                            </td>
+                                        {% elif forloop.counter >= 6 %}
+                                            <td class="weekend">
+                                                <div class="day-number">{{ day }}</div>
+                                            </td>
+                                        {% else %}
+                                            <td>
+                                                <div class="day-number">{{ day }}</div>
+                                            </td>
+                                        {% endif %}
+                                    {% endwith %}
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+            <div class="current-date-info">
+                <h3>Сегодняшняя дата</h3>
+                <div class="current-date">{{ today|date:"d E Y г." }}</div>
+                <p>День недели: {{ today|date:"l" }}, {{ today.day }} день месяца, {{ today|date:"W" }} неделя года</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Календарь создан с использованием Django • Все дни хорошие!</p>
+        </div>
+    </div>
+</body>
+</html>
