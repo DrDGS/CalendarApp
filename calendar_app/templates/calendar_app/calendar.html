@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Календарь</title>
+    <title>Календарь студента</title>
     <style>
         * {
             margin: 0;
@@ -118,7 +118,7 @@
         .calendar td {
             padding: 20px 10px;
             text-align: center;
-            height: 100px;
+            height: 120px;
             vertical-align: top;
             border: 1px solid #f0f0f0;
             transition: all 0.2s ease;
@@ -127,8 +127,6 @@
         
         .calendar td:hover:not(.empty) {
             background-color: #f8fafc;
-            transform: scale(1.03);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
         .day-number {
@@ -160,6 +158,56 @@
             background-color: #f9f9f9;
         }
         
+        .day-events {
+            max-height: 70px;
+            overflow-y: auto;
+            margin-top: 5px;
+            font-size: 0.8rem;
+        }
+        
+        .event {
+            background: #4a6fa5;
+            color: white;
+            padding: 4px 8px;
+            margin: 3px 0;
+            border-radius: 6px;
+            cursor: default;
+            text-align: left;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .event-difficulty-low {
+            border-left-color: #27ae60;
+            background: #d5f4e6;
+            color: #27ae60;
+        }
+        
+        .event-difficulty-medium {
+            border-left-color: #f39c12;
+            background: #fef9e7;
+            color: #f39c12;
+        }
+        
+        .event-difficulty-high {
+            border-left-color: #e74c3c;
+            background: #fadbd8;
+            color: #e74c3c;
+        }
+        
+        .event-subject {
+            font-size: 0.7rem;
+            opacity: 0.9;
+            display: block;
+            margin-top: 2px;
+        }
+        
+        .event-difficulty {
+            font-size: 0.7rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        
         .current-date-info {
             text-align: center;
             padding: 20px;
@@ -167,11 +215,6 @@
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             margin-top: 20px;
-        }
-        
-        .current-date-info h3 {
-            color: #2c3e50;
-            margin-bottom: 10px;
         }
         
         .current-date {
@@ -189,10 +232,43 @@
             font-size: 0.9rem;
         }
         
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        
+        .events-summary {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .events-summary h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
         @media (max-width: 768px) {
             .calendar th, .calendar td {
                 padding: 10px 5px;
-                height: 70px;
+                height: 100px;
             }
             
             .day-number {
@@ -206,9 +282,19 @@
                 font-size: 1.5rem;
             }
             
+            .nav-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
             .nav-btn {
                 padding: 10px 15px;
                 font-size: 0.9rem;
+            }
+            
+            .day-events {
+                max-height: 60px;
+                font-size: 0.7rem;
             }
         }
     </style>
@@ -216,7 +302,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Календарь</h1>
+            <h1>📅 Календарь студента</h1>
             <p>Сегодня: {{ today|date:"d E Y" }}</p>
         </div>
         
@@ -245,22 +331,40 @@
                                 {% if day == 0 %}
                                     <td class="empty"></td>
                                 {% else %}
-                                    {% with current_date=date year=year month=month day=day %}
-                                        {% if day == today.day and month == today.month and year == today.year %}
-                                            <td class="today">
-                                                <div class="day-number">{{ day }}</div>
-                                                <div class="day-indicator">Сегодня</div>
-                                            </td>
-                                        {% elif forloop.counter >= 6 %}
-                                            <td class="weekend">
-                                                <div class="day-number">{{ day }}</div>
-                                            </td>
-                                        {% else %}
-                                            <td>
-                                                <div class="day-number">{{ day }}</div>
-                                            </td>
-                                        {% endif %}
-                                    {% endwith %}
+                                    {% if day == today.day and month == today.month and year == today.year %}
+                                        <td class="today">
+                                    {% elif forloop.counter >= 6 %}
+                                        <td class="weekend">
+                                    {% else %}
+                                        <td>
+                                    {% endif %}
+                                    
+                                        <div class="day-number">{{ day }}</div>
+                                        
+                                        <!-- Отображение событий для этого дня -->
+                                        {% for event_item in events_list %}
+                                            {% if event_item.day == day %}
+                                                <div class="day-events">
+                                                    {% for event in event_item.events %}
+                                                        {% if event.difficulty <= 3 %}
+                                                            <div class="event event-difficulty-low">
+                                                        {% elif event.difficulty <= 7 %}
+                                                            <div class="event event-difficulty-medium">
+                                                        {% else %}
+                                                            <div class="event event-difficulty-high">
+                                                        {% endif %}
+                                                            <strong>{{ event.name|truncatechars:20 }}</strong>
+                                                            <span class="event-subject">
+                                                                {{ event.subject }}
+                                                                <span class="event-difficulty">Сл:{{ event.difficulty }}</span>
+                                                                <span>Вр:{{ event.time_required }}</span>
+                                                            </span>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </td>
                                 {% endif %}
                             {% endfor %}
                         </tr>
@@ -268,16 +372,61 @@
                 </tbody>
             </table>
             
-            <div class="current-date-info">
-                <h3>Сегодняшняя дата</h3>
-                <div class="current-date">{{ today|date:"d E Y г." }}</div>
-                <p>День недели: {{ today|date:"l" }}, {{ today.day }} день месяца, {{ today|date:"W" }} неделя года</p>
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #d5f4e6; border-left: 4px solid #27ae60;"></div>
+                    <span>Низкая сложность (1-3)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #fef9e7; border-left: 4px solid #f39c12;"></div>
+                    <span>Средняя сложность (4-7)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #fadbd8; border-left: 4px solid #e74c3c;"></div>
+                    <span>Высокая сложность (8-10)</span>
+                </div>
+            </div>
+            
+            <div class="events-summary">
+                <h4>📋 События на {{ month_name|lower }} {{ year }}</h4>
+                {% if all_events %}
+                    <p>Всего событий в месяце: {{ all_events|length }}</p>
+                    <div style="margin-top: 10px;">
+                        {% for event in all_events %}
+                            <div style="padding: 8px; border-bottom: 1px solid #eee; font-size: 0.9rem;">
+                                <strong>{{ event.date }}:</strong> {{ event.name }} 
+                                <em>({{ event.subject }})</em>
+                                <span style="float: right;">
+                                    Сложность: {{ event.difficulty }}/10, 
+                                    Времязатратность: {{ event.time_required }}/10
+                                </span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p>На этот месяц событий пока нет</p>
+                {% endif %}
             </div>
         </div>
         
         <div class="footer">
-            <p>Календарь создан с использованием Django • Все дни хорошие!</p>
+            <p>Календарь студента • Управляй своим учебным процессом!</p>
         </div>
     </div>
+    
+    <script>
+        // Простая функция для отображения информации о событии при клике
+        document.addEventListener('DOMContentLoaded', function() {
+            const events = document.querySelectorAll('.event');
+            events.forEach(event => {
+                event.addEventListener('click', function(e) {
+                    // Показываем alert с полной информацией о событии
+                    const eventName = this.querySelector('strong').textContent;
+                    const eventSubject = this.querySelector('.event-subject').textContent;
+                    alert(`Событие: ${eventName}\n${eventSubject}`);
+                });
+            });
+        });
+    </script>
 </body>
 </html>

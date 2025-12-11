@@ -2,10 +2,12 @@ from django.shortcuts import render
 from datetime import datetime, date
 import calendar
 from django.utils import timezone
+from .json_storage import event_storage
 
 def calendar_view(request):
-    # Получаем текущую дату
+    # Получаем текущую дату с учетом локального времени
     today = timezone.localtime(timezone.now()).date()
+    
     # Получаем год и месяц из GET-параметров или используем текущие
     year = request.GET.get('year', today.year)
     month = request.GET.get('month', today.month)
@@ -55,6 +57,27 @@ def calendar_view(request):
         next_month = 1
         next_year += 1
     
+    # Получаем события для текущего месяца
+    events = event_storage.get_events_by_month(year, month)
+    
+    # Создаем словарь событий по дням для удобного доступа в шаблоне
+    events_by_day = {}
+    for event in events:
+        event_date = event['date']
+        # Извлекаем день из даты (формат YYYY-MM-DD)
+        day = int(event_date.split('-')[2])
+        if day not in events_by_day:
+            events_by_day[day] = []
+        events_by_day[day].append(event)
+    
+    # Создаем список для легкого доступа в шаблоне
+    events_list_for_template = []
+    for day_num, day_events in events_by_day.items():
+        events_list_for_template.append({
+            'day': day_num,
+            'events': day_events
+        })
+    
     # Подготавливаем данные для шаблона
     context = {
         'year': year,
@@ -68,6 +91,9 @@ def calendar_view(request):
         'next_year': next_year,
         'next_month': next_month,
         'days_in_month': days_in_month,
+        'events_by_day': events_by_day,
+        'events_list': events_list_for_template,
+        'all_events': events,
     }
     
     return render(request, 'calendar_app/calendar.html', context)

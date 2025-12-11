@@ -1,0 +1,54 @@
+import json
+import os
+from django.conf import settings
+from datetime import datetime
+
+class EventStorage:
+    def __init__(self):
+        self.events_file = os.path.join(settings.BASE_DIR, 'calendar_app', 'events.json')
+        self._ensure_file_exists()
+    
+    def _ensure_file_exists(self):
+        """Создает файл events.json, если он не существует"""
+        if not os.path.exists(self.events_file):
+            # Создаем пустой список событий
+            empty_data = []
+            self._write_events(empty_data)
+    
+    def _read_events(self):
+        """Читает события из JSON файла"""
+        try:
+            with open(self.events_file, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except (json.JSONDecodeError, FileNotFoundError):
+            return []
+    
+    def _write_events(self, events_list):
+        """Записывает события в JSON файл"""
+        with open(self.events_file, 'w', encoding='utf-8') as f:
+            json.dump(events_list, f, ensure_ascii=False, indent=2)
+    
+    def get_all_events(self):
+        """Возвращает все события"""
+        return self._read_events()
+    
+    def get_events_by_date(self, date_str):
+        """Возвращает события на определенную дату"""
+        events = self._read_events()
+        return [event for event in events if event.get("date") == date_str]
+    
+    def get_events_by_month(self, year, month):
+        """Возвращает события за определенный месяц"""
+        events = self._read_events()
+        month_str = str(month).zfill(2)
+        events_in_month = []
+        
+        for event in events:
+            event_date = event.get("date", "")
+            if event_date.startswith(f"{year}-{month_str}"):
+                events_in_month.append(event)
+        
+        return events_in_month
+
+# Создаем глобальный экземпляр для использования
+event_storage = EventStorage()
