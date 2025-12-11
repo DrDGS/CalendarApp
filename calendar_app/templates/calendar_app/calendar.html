@@ -438,6 +438,7 @@
                 <div class="nav-buttons">
                     <a href="?year={{ prev_year }}&month={{ prev_month }}" class="nav-btn">← Предыдущий месяц</a>
                     <a href="{% url 'calendar_app:calendar' %}" class="nav-btn today-btn">Сегодня</a>
+                    <a href="{% url 'calendar_app:add_event' %}" class="nav-btn" style="background-color: #9b59b6;">➕ Добавить дедлайн</a>
                     <a href="?year={{ next_year }}&month={{ next_month }}" class="nav-btn">Следующий месяц →</a>
                 </div>
             </div>
@@ -597,6 +598,43 @@
                         container.scrollTop = scrollTop - walk;
                     });
                 }
+            });
+        });
+
+        // Функция для открытия формы добавления события с выбранной датой
+        function openAddEventForm(dateStr) {
+            window.location.href = "{% url 'calendar_app:add_event' %}?date=" + dateStr;
+        }
+        
+        // Обработка двойного клика по дням календаря
+        document.addEventListener('DOMContentLoaded', function() {
+            const dayCells = document.querySelectorAll('.calendar td:not(.empty)');
+            
+            dayCells.forEach(cell => {
+                const dayNumber = cell.querySelector('.day-number');
+                if (!dayNumber) return;
+                
+                const day = parseInt(dayNumber.textContent);
+                if (isNaN(day)) return;
+                
+                // Формируем дату в формате YYYY-MM-DD
+                const currentYear = {{ year }};
+                const currentMonth = {{ month }};
+                const dateStr = `${currentYear}-${currentMonth.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+                
+                // Сохраняем дату в атрибуте
+                cell.setAttribute('data-date', dateStr);
+                
+                // Добавляем обработчик двойного клика
+                cell.addEventListener('dblclick', function(e) {
+                    // Не открываем форму, если кликнули по событию
+                    if (!e.target.classList.contains('event')) {
+                        openAddEventForm(dateStr);
+                    }
+                });
+                
+                // Добавляем подсказку
+                cell.title = 'Двойной клик для добавления дедлайна';
             });
         });
     </script>

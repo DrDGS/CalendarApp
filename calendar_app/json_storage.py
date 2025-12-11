@@ -13,33 +13,54 @@ class EventStorage:
         if not os.path.exists(self.events_file):
             # Создаем пустой список событий
             empty_data = []
-            self._write_events(empty_data)
+            with open(self.events_file, 'w', encoding='utf-8') as f:
+                json.dump(empty_data, f, ensure_ascii=False, indent=2)
     
-    def _read_events(self):
-        """Читает события из JSON файла"""
+    def get_all_events(self):
+        """Возвращает все события"""
         try:
             with open(self.events_file, 'r', encoding='utf-8') as f:
                 return json.load(f)
         except (json.JSONDecodeError, FileNotFoundError):
             return []
     
-    def _write_events(self, events_list):
-        """Записывает события в JSON файл"""
+    def add_event(self, event_data):
+        """Добавляет новое событие и возвращает его с ID"""
+        events = self.get_all_events()
+        
+        # Генерируем новый ID
+        if events:
+            # Находим максимальный ID
+            max_id = 0
+            for event in events:
+                event_id = event.get('id', 0)
+                if event_id > max_id:
+                    max_id = event_id
+            new_id = max_id + 1
+        else:
+            new_id = 1
+        
+        # Добавляем ID и время создания
+        event_data['id'] = new_id
+        if 'created_at' not in event_data:
+            event_data['created_at'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        events.append(event_data)
+        
+        # Сохраняем обратно в файл
         with open(self.events_file, 'w', encoding='utf-8') as f:
-            json.dump(events_list, f, ensure_ascii=False, indent=2)
-    
-    def get_all_events(self):
-        """Возвращает все события"""
-        return self._read_events()
+            json.dump(events, f, ensure_ascii=False, indent=2)
+        
+        return event_data
     
     def get_events_by_date(self, date_str):
         """Возвращает события на определенную дату"""
-        events = self._read_events()
+        events = self.get_all_events()
         return [event for event in events if event.get("date") == date_str]
     
     def get_events_by_month(self, year, month):
         """Возвращает события за определенный месяц"""
-        events = self._read_events()
+        events = self.get_all_events()
         month_str = str(month).zfill(2)
         events_in_month = []
         

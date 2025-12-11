@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить дедлайн - Календарь студента</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4a6fa5 0%, #385d8a 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .form-container {
+            padding: 40px;
+        }
+        
+        .error-message {
+            background-color: #fadbd8;
+            color: #e74c3c;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: #4a6fa5;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.1);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .rating-slider {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .slider-value {
+            min-width: 40px;
+            font-weight: bold;
+            color: #4a6fa5;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+        
+        input[type="range"] {
+            flex: 1;
+            height: 8px;
+            -webkit-appearance: none;
+            background: #e0e0e0;
+            border-radius: 4px;
+            outline: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #4a6fa5;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #4a6fa5;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .difficulty-indicator {
+            height: 8px;
+            background: linear-gradient(to right, #27ae60, #f39c12, #e74c3c);
+            border-radius: 4px;
+            margin-top: 5px;
+            position: relative;
+        }
+        
+        .difficulty-marker {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 3px solid #4a6fa5;
+            border-radius: 50%;
+            top: -6px;
+            transform: translateX(-50%);
+            transition: left 0.3s;
+        }
+        
+        .subject-select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: white;
+            cursor: pointer;
+        }
+        
+        .subject-select:focus {
+            border-color: #4a6fa5;
+            outline: none;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 2px solid #f0f0f0;
+        }
+        
+        .btn {
+            padding: 15px 35px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #27ae60 0%, #219653 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #666;
+        }
+        
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+        
+        .required {
+            color: #e74c3c;
+        }
+        
+        .date-display {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #e3f2fd;
+            border-radius: 8px;
+            color: #2196f3;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .container {
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 Добавить дедлайн</h1>
+            <p>Заполните информацию о новом учебном событии</p>
+        </div>
+        
+        <div class="form-container">
+            {% if error %}
+                <div class="error-message">
+                    <strong>Ошибка:</strong> {{ error }}
+                </div>
+            {% endif %}
+            
+            {% if selected_date %}
+                <div class="date-display">
+                    📅 Выбранная дата: {{ selected_date }}
+                </div>
+            {% endif %}
+            
+            <form method="POST" action="{% url 'calendar_app:add_event' %}">
+                {% csrf_token %}
+                
+                {% if selected_date %}
+                    <input type="hidden" name="date" value="{{ selected_date }}">
+                {% endif %}
+                
+                <div class="form-group">
+                    <label for="name">Название дедлайна <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" class="form-control" 
+                           placeholder="Например: Сдача курсовой работы" 
+                           value="{{ form_data.name|default:'' }}" required maxlength="100">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Предмет <span class="required">*</span></label>
+                    <select id="subject" name="subject" class="subject-select" required>
+                        <option value="">Выберите предмет</option>
+                        <option value="Математика" {% if form_data.subject == "Математика" %}selected{% endif %}>Математика</option>
+                        <option value="Физика" {% if form_data.subject == "Физика" %}selected{% endif %}>Физика</option>
+                        <option value="Программирование" {% if form_data.subject == "Программирование" %}selected{% endif %}>Программирование</option>
+                        <option value="Английский язык" {% if form_data.subject == "Английский язык" %}selected{% endif %}>Английский язык</option>
+                        <option value="История" {% if form_data.subject == "История" %}selected{% endif %}>История</option>
+                        <option value="Философия" {% if form_data.subject == "Философия" %}selected{% endif %}>Философия</option>
+                        <option value="Экономика" {% if form_data.subject == "Экономика" %}selected{% endif %}>Экономика</option>
+                        <option value="Химия" {% if form_data.subject == "Химия" %}selected{% endif %}>Химия</option>
+                        <option value="Биология" {% if form_data.subject == "Биология" %}selected{% endif %}>Биология</option>
+                        <option value="other">Другой предмет...</option>
+                    </select>
+                    <input type="text" id="custom_subject" name="custom_subject" class="form-control" 
+                           style="margin-top: 10px; display: none;" 
+                           placeholder="Введите название предмета">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="difficulty">Сложность: <span id="difficultyValue">5</span>/10</label>
+                        <div class="rating-slider">
+                            <span class="slider-value">1</span>
+                            <input type="range" id="difficulty" name="difficulty" 
+                                   min="1" max="10" value="{{ form_data.difficulty|default:'5' }}" 
+                                   class="form-control" required>
+                            <span class="slider-value">10</span>
+                        </div>
+                        <div class="difficulty-indicator">
+                            <div class="difficulty-marker" id="difficultyMarker" style="left: 50%;"></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-top: 5px; font-size: 0.8rem; color: #666;">
+                            <span>Легко</span>
+                            <span>Средне</span>
+                            <span>Сложно</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="time_required">Времязатратность: <span id="timeValue">5</span>/10</label>
+                        <div class="rating-slider">
+                            <span class="slider-value">1</span>
+                            <input type="range" id="time_required" name="time_required" 
+                                   min="1" max="10" value="{{ form_data.time_required|default:'5' }}" 
+                                   class="form-control" required>
+                            <span class="slider-value">10</span>
+                        </div>
+                        <div class="difficulty-indicator">
+                            <div class="difficulty-marker" id="timeMarker" style="left: 50%;"></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-top: 5px; font-size: 0.8rem; color: #666;">
+                            <span>Мало</span>
+                            <span>Умеренно</span>
+                            <span>Много</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Дата дедлайна <span class="required">*</span></label>
+                    <input type="date" id="date" name="date" class="form-control" 
+                        value="{{ form_data.date|default:selected_date|default:today }}" 
+                        min="2024-01-01" max="2026-12-31" required>
+                </div>
+                
+                <div class="form-actions">
+                    <a href="{% url 'calendar_app:calendar' %}" class="btn btn-secondary">
+                        ← Назад к календарю
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        ✅ Добавить дедлайн
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // Обновление отображения ползунков
+        function updateSlider(slider, valueElement, marker) {
+            const value = parseInt(slider.value);
+            valueElement.textContent = value;
+            
+            // Обновляем положение маркера (от 0% до 100%)
+            const percent = ((value - 1) / 9) * 100;
+            marker.style.left = `${percent}%`;
+            
+            // Обновляем цвет текста в зависимости от значения
+            if (value <= 3) {
+                valueElement.style.color = '#27ae60';
+            } else if (value <= 7) {
+                valueElement.style.color = '#f39c12';
+            } else {
+                valueElement.style.color = '#e74c3c';
+            }
+        }
+        
+        // Инициализация ползунков
+        const difficultySlider = document.getElementById('difficulty');
+        const difficultyValue = document.getElementById('difficultyValue');
+        const difficultyMarker = document.getElementById('difficultyMarker');
+        
+        const timeSlider = document.getElementById('time_required');
+        const timeValue = document.getElementById('timeValue');
+        const timeMarker = document.getElementById('timeMarker');
+        
+        // Устанавливаем начальные значения
+        updateSlider(difficultySlider, difficultyValue, difficultyMarker);
+        updateSlider(timeSlider, timeValue, timeMarker);
+        
+        // Обработчики изменений
+        difficultySlider.addEventListener('input', () => {
+            updateSlider(difficultySlider, difficultyValue, difficultyMarker);
+        });
+        
+        timeSlider.addEventListener('input', () => {
+            updateSlider(timeSlider, timeValue, timeMarker);
+        });
+        
+        // Обработка выбора предмета
+        const subjectSelect = document.getElementById('subject');
+        const customSubjectInput = document.getElementById('custom_subject');
+        
+        subjectSelect.addEventListener('change', function() {
+            if (this.value === 'other') {
+                customSubjectInput.style.display = 'block';
+                customSubjectInput.required = true;
+                // Переименовываем поле для корректной отправки
+                customSubjectInput.name = 'subject';
+                subjectSelect.disabled = true;
+                subjectSelect.name = '';
+            } else {
+                customSubjectInput.style.display = 'none';
+                customSubjectInput.required = false;
+                customSubjectInput.name = 'custom_subject';
+                subjectSelect.disabled = false;
+                subjectSelect.name = 'subject';
+            }
+        });
+        
+        // Если уже выбран "другой" при загрузке страницы
+        if (subjectSelect.value === 'other') {
+            customSubjectInput.style.display = 'block';
+            customSubjectInput.required = true;
+        }
+        
+        // Установка минимальной даты на сегодня
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.min = today;
+        
+        // Если дата не выбрана, устанавливаем сегодняшнюю
+        if (!dateInput.value) {
+            dateInput.value = today;
+        }
+    </script>
+</body>
+</html>
