@@ -104,25 +104,33 @@
         .calendar {
             width: 100%;
             border-collapse: collapse;
+            table-layout: fixed; /* Фиксированная ширина колонок */
         }
         
         .calendar th {
-            padding: 20px 10px;
+            padding: 15px 5px;
             text-align: center;
             font-weight: 700;
             font-size: 1.1rem;
             color: #4a6fa5;
             border-bottom: 2px solid #f0f0f0;
+            height: 50px;
         }
         
         .calendar td {
-            padding: 20px 10px;
+            padding: 10px 5px;
             text-align: center;
-            height: 120px;
+            height: 140px; /* Фиксированная высота для всех ячеек */
             vertical-align: top;
             border: 1px solid #f0f0f0;
-            transition: all 0.2s ease;
             position: relative;
+            overflow: hidden; /* Скрываем все, что выходит за пределы */
+        }
+        
+        /* Устанавливаем одинаковую ширину для всех колонок */
+        .calendar th,
+        .calendar td {
+            width: 14.2857%; /* 100% / 7 = 14.2857% */
         }
         
         .calendar td:hover:not(.empty) {
@@ -130,14 +138,16 @@
         }
         
         .day-number {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             display: inline-block;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
+            width: 36px;
+            height: 36px;
+            line-height: 36px;
             border-radius: 50%;
+            position: relative;
+            z-index: 2;
         }
         
         .today {
@@ -158,22 +168,49 @@
             background-color: #f9f9f9;
         }
         
+        .day-content {
+            height: calc(100% - 50px); /* Отнимаем место для номера дня */
+            overflow: hidden; /* Скрываем содержимое, выходящее за пределы */
+            position: relative;
+        }
+        
         .day-events {
-            max-height: 70px;
-            overflow-y: auto;
-            margin-top: 5px;
-            font-size: 0.8rem;
+            max-height: 100%;
+            overflow-y: auto; /* Вертикальная прокрутка при необходимости */
+            padding-right: 2px; /* Для компенсации скроллбара */
+        }
+        
+        /* Стилизация скроллбара */
+        .day-events::-webkit-scrollbar {
+            width: 4px;
+        }
+        
+        .day-events::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 2px;
+        }
+        
+        .day-events::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 2px;
+        }
+        
+        .day-events::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
         }
         
         .event {
             background: #4a6fa5;
             color: white;
-            padding: 4px 8px;
-            margin: 3px 0;
+            padding: 6px 8px;
+            margin: 4px 0;
             border-radius: 6px;
             cursor: default;
             text-align: left;
             border-left: 4px solid #2196f3;
+            font-size: 0.75rem;
+            line-height: 1.3;
+            break-inside: avoid; /* Не разрывать событие при переносе */
         }
         
         .event-difficulty-low {
@@ -199,10 +236,13 @@
             opacity: 0.9;
             display: block;
             margin-top: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
         .event-difficulty {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: bold;
             display: inline-block;
             margin-right: 5px;
@@ -265,10 +305,26 @@
             margin-bottom: 10px;
         }
         
-        @media (max-width: 768px) {
-            .calendar th, .calendar td {
-                padding: 10px 5px;
-                height: 100px;
+        /* Индикатор количества событий в углу дня */
+        .event-count {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #e74c3c;
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+        }
+        
+        @media (max-width: 1024px) {
+            .calendar td {
+                height: 120px;
             }
             
             .day-number {
@@ -276,6 +332,31 @@
                 width: 30px;
                 height: 30px;
                 line-height: 30px;
+            }
+            
+            .event {
+                padding: 4px 6px;
+                font-size: 0.7rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .calendar th, .calendar td {
+                padding: 8px 3px;
+                height: 100px;
+            }
+            
+            .calendar th {
+                font-size: 0.9rem;
+                padding: 10px 3px;
+            }
+            
+            .day-number {
+                font-size: 1rem;
+                width: 26px;
+                height: 26px;
+                line-height: 26px;
+                margin-bottom: 4px;
             }
             
             .month-year {
@@ -292,9 +373,54 @@
                 font-size: 0.9rem;
             }
             
+            .event {
+                padding: 3px 5px;
+                font-size: 0.65rem;
+                margin: 2px 0;
+            }
+            
+            .event-subject {
+                font-size: 0.6rem;
+            }
+            
             .day-events {
-                max-height: 60px;
-                font-size: 0.7rem;
+                max-height: calc(100px - 40px);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .calendar td {
+                height: 85px;
+            }
+            
+            .calendar th {
+                font-size: 0.8rem;
+                padding: 8px 2px;
+            }
+            
+            .day-number {
+                font-size: 0.9rem;
+                width: 22px;
+                height: 22px;
+                line-height: 22px;
+            }
+            
+            .event {
+                padding: 2px 4px;
+                font-size: 0.6rem;
+                margin: 1px 0;
+            }
+            
+            .event-subject {
+                display: none; /* На очень маленьких экранах скрываем доп. информацию */
+            }
+            
+            .legend {
+                gap: 10px;
+            }
+            
+            .legend-item {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -341,29 +467,38 @@
                                     
                                         <div class="day-number">{{ day }}</div>
                                         
-                                        <!-- Отображение событий для этого дня -->
+                                        <!-- Индикатор количества событий -->
                                         {% for event_item in events_list %}
-                                            {% if event_item.day == day %}
-                                                <div class="day-events">
-                                                    {% for event in event_item.events %}
-                                                        {% if event.difficulty <= 3 %}
-                                                            <div class="event event-difficulty-low">
-                                                        {% elif event.difficulty <= 7 %}
-                                                            <div class="event event-difficulty-medium">
-                                                        {% else %}
-                                                            <div class="event event-difficulty-high">
-                                                        {% endif %}
-                                                            <strong>{{ event.name|truncatechars:20 }}</strong>
-                                                            <span class="event-subject">
-                                                                {{ event.subject }}
-                                                                <span class="event-difficulty">Сл:{{ event.difficulty }}</span>
-                                                                <span>Вр:{{ event.time_required }}</span>
-                                                            </span>
-                                                        </div>
-                                                    {% endfor %}
-                                                </div>
+                                            {% if event_item.day == day and event_item.events|length > 0 %}
+                                                <div class="event-count">{{ event_item.events|length }}</div>
                                             {% endif %}
                                         {% endfor %}
+                                        
+                                        <div class="day-content">
+                                            <div class="day-events">
+                                                <!-- Отображение событий для этого дня -->
+                                                {% for event_item in events_list %}
+                                                    {% if event_item.day == day %}
+                                                        {% for event in event_item.events %}
+                                                            {% if event.difficulty <= 3 %}
+                                                                <div class="event event-difficulty-low">
+                                                            {% elif event.difficulty <= 7 %}
+                                                                <div class="event event-difficulty-medium">
+                                                            {% else %}
+                                                                <div class="event event-difficulty-high">
+                                                            {% endif %}
+                                                                <strong>{{ event.name|truncatechars:18 }}</strong>
+                                                                <span class="event-subject">
+                                                                    {{ event.subject }}
+                                                                    <span class="event-difficulty">Сл:{{ event.difficulty }}</span>
+                                                                    <span>Вр:{{ event.time_required }}</span>
+                                                                </span>
+                                                            </div>
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </div>
+                                        </div>
                                     </td>
                                 {% endif %}
                             {% endfor %}
@@ -425,6 +560,43 @@
                     const eventSubject = this.querySelector('.event-subject').textContent;
                     alert(`Событие: ${eventName}\n${eventSubject}`);
                 });
+            });
+            
+            // Добавляем плавный скролл для блоков с событиями
+            const dayEvents = document.querySelectorAll('.day-events');
+            dayEvents.forEach(container => {
+                if (container.scrollHeight > container.clientHeight) {
+                    container.style.cursor = 'grab';
+                    
+                    let isDragging = false;
+                    let startY;
+                    let scrollTop;
+                    
+                    container.addEventListener('mousedown', (e) => {
+                        isDragging = true;
+                        startY = e.pageY - container.offsetTop;
+                        scrollTop = container.scrollTop;
+                        container.style.cursor = 'grabbing';
+                    });
+                    
+                    container.addEventListener('mouseleave', () => {
+                        isDragging = false;
+                        container.style.cursor = 'grab';
+                    });
+                    
+                    container.addEventListener('mouseup', () => {
+                        isDragging = false;
+                        container.style.cursor = 'grab';
+                    });
+                    
+                    container.addEventListener('mousemove', (e) => {
+                        if (!isDragging) return;
+                        e.preventDefault();
+                        const y = e.pageY - container.offsetTop;
+                        const walk = (y - startY) * 1.5;
+                        container.scrollTop = scrollTop - walk;
+                    });
+                }
             });
         });
     </script>
