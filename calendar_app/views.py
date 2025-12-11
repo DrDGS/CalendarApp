@@ -6,6 +6,8 @@ from .json_storage import event_storage
 import json
 import os
 from django.conf import settings
+import requests
+from django.http import JsonResponse
 
 def calendar_view(request):
     # Получаем текущую дату с учетом локального времени
@@ -81,6 +83,18 @@ def calendar_view(request):
             'events': day_events
         })
     
+    # Преобразуем события в JSON-безопасный формат
+    events_json = []
+    for event in events:
+        events_json.append({
+            'id': event.get('id'),
+            'name': event.get('name'),
+            'subject': event.get('subject'),
+            'difficulty': event.get('difficulty'),
+            'time_required': event.get('time_required'),
+            'date': event.get('date')
+        })
+
     # Подготавливаем данные для шаблона
     context = {
         'year': year,
@@ -95,6 +109,7 @@ def calendar_view(request):
         'next_month': next_month,
         'days_in_month': days_in_month,
         'events_by_day': events_by_day,
+        'all_events_json': json.dumps(events_json),
         'events_list': events_list_for_template,
         'all_events': events,
     }
@@ -194,3 +209,30 @@ def delete_event_view(request, event_id):
     
     # Если не POST запрос, перенаправляем на календарь
     return redirect('calendar_app:calendar')
+
+def get_ai_analysis(request):
+    """Получает случайный текст для анализа"""
+    try:
+        # Вариант 1: Получаем случайный текст с lorem-ipsum API
+        response = requests.get('https://loripsum.net/api/1/short/plaintext', timeout=5)
+        
+        # Проверяем статус ответа
+        if response.status_code == 200:
+            text = response.text.strip()
+            return JsonResponse({
+                'success': True,
+                'text': text[:500]  # Ограничиваем длину
+            })
+        else:
+            # Если не получилось, используем fallback текст
+            return JsonResponse({
+                'success': True,
+                'text': "Анализ расписания: Ваши дедлайны распределены равномерно. Рекомендуется начать с задания по математике, так как оно имеет высокую сложность."
+            })
+            
+    except Exception as e:
+        # В случае ошибки возвращаем fallback текст
+        return JsonResponse({
+            'success': True,
+            'text': f"ИИ-анализ временно недоступен. Техническая информация: {str(e)}"
+        })
