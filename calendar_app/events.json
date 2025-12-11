@@ -43,23 +43,5 @@
     "time_required": 4,
     "date": "2026-01-06",
     "created_at": "2025-12-10 18:00:00"
-  },
-  {
-    "name": "ЖЕЕЕСТЬ",
-    "subject": "МИСПИСИТ",
-    "difficulty": 10,
-    "time_required": 10,
-    "date": "2025-12-12",
-    "created_at": "2025-12-12 01:46:37",
-    "id": 6
-  },
-  {
-    "name": "Тест",
-    "subject": "Физика",
-    "difficulty": 9,
-    "time_required": 2,
-    "date": "2025-12-17",
-    "created_at": "2025-12-12 01:48:16",
-    "id": 7
   }
 ]

@@ -53,6 +53,22 @@ class EventStorage:
         
         return event_data
     
+    def delete_event(self, event_id):
+        """Удаляет событие по ID и возвращает True если удалено, False если не найдено"""
+        events = self.get_all_events()
+        
+        # Находим индекс события
+        for i, event in enumerate(events):
+            if event.get('id') == event_id:
+                # Удаляем событие
+                del events[i]
+                # Сохраняем обновленный список
+                with open(self.events_file, 'w', encoding='utf-8') as f:
+                    json.dump(events, f, ensure_ascii=False, indent=2)
+                return True
+        
+        return False
+    
     def get_events_by_date(self, date_str):
         """Возвращает события на определенную дату"""
         events = self.get_all_events()

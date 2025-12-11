@@ -3,6 +3,9 @@ from datetime import datetime, date
 import calendar
 from django.utils import timezone
 from .json_storage import event_storage
+import json
+import os
+from django.conf import settings
 
 def calendar_view(request):
     # Получаем текущую дату с учетом локального времени
@@ -105,13 +108,16 @@ def add_event_view(request):
         # Получаем данные из формы
         name = request.POST.get('name', '').strip()
         subject = request.POST.get('subject', '').strip()
+        # Если выбрано "Другой предмет", берем значение из custom_subject
+        if subject == 'other':
+            subject = request.POST.get('custom_subject', '').strip()
+        
         difficulty = request.POST.get('difficulty', '5')
         time_required = request.POST.get('time_required', '5')
         date = request.POST.get('date', '')
         
         # Валидация данных
         if not name or not subject or not date:
-            # Можно добавить сообщение об ошибке
             return render(request, 'calendar_app/add_event.html', {
                 'error': 'Все поля обязательны для заполнения',
                 'form_data': request.POST
@@ -130,42 +136,16 @@ def add_event_view(request):
                 })
             
             # Создаем объект события
-            new_event = {
+            new_event_data = {
                 'name': name,
                 'subject': subject,
                 'difficulty': difficulty_int,
                 'time_required': time_int,
                 'date': date,
-                'created_at': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             }
             
             # Добавляем событие через storage
-            # Сначала получим все события
-            all_events = event_storage.get_all_events()
-            
-            # Определяем новый ID
-            if all_events:
-                new_id = max(event.get('id', 0) for event in all_events) + 1
-            else:
-                new_id = 1
-            
-            new_event['id'] = new_id
-            
-            # Добавляем новое событие в список
-            all_events.append(new_event)
-            
-            # Сохраняем обновленный список
-            # Нужно создать метод save_all_events в EventStorage или обновить текущий
-            # Для простоты создадим временное решение
-            
-            # Временно: перезаписываем файл напрямую
-            import json
-            import os
-            from django.conf import settings
-            
-            events_file = os.path.join(settings.BASE_DIR, 'calendar_app', 'events.json')
-            with open(events_file, 'w', encoding='utf-8') as f:
-                json.dump(all_events, f, ensure_ascii=False, indent=2)
+            new_event = event_storage.add_event(new_event_data)
             
             # Перенаправляем на календарь
             return redirect('calendar_app:calendar')
@@ -179,7 +159,38 @@ def add_event_view(request):
     # GET запрос - показываем пустую форму
     # Если передана дата в параметрах, подставляем её
     selected_date = request.GET.get('date', '')
+    today = timezone.localtime(timezone.now()).date().strftime("%Y-%m-%d")
+    
+    # Если передана дата из календаря, используем её, иначе - сегодня
+    if selected_date:
+        default_date = selected_date
+    else:
+        default_date = today
+    
     return render(request, 'calendar_app/add_event.html', {
         'selected_date': selected_date,
-        'today': timezone.localtime(timezone.now()).date().strftime("%Y-%m-%d")
+        'default_date': default_date,
+        'today': today
     })
+
+def delete_event_view(request, event_id):
+    """Удаление события по ID"""
+    if request.method == 'POST':
+        try:
+            # Используем метод delete_event из event_storage
+            success = event_storage.delete_event(event_id)
+            
+            if success:
+                # Перенаправляем на календарь с сообщением об успехе
+                return redirect('calendar_app:calendar')
+            else:
+                # Если событие не найдено, все равно перенаправляем на календарь
+                return redirect('calendar_app:calendar')
+                
+        except Exception as e:
+            # В случае ошибки возвращаем на календарь
+            print(f"Ошибка при удалении события: {e}")  # Для отладки
+            return redirect('calendar_app:calendar')
+    
+    # Если не POST запрос, перенаправляем на календарь
+    return redirect('calendar_app:calendar')
