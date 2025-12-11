@@ -5,8 +5,7 @@ from django.utils import timezone
 
 def calendar_view(request):
     # Получаем текущую дату
-    today = timezone.now().date()
-    
+    today = timezone.localtime(timezone.now()).date()
     # Получаем год и месяц из GET-параметров или используем текущие
     year = request.GET.get('year', today.year)
     month = request.GET.get('month', today.month)
