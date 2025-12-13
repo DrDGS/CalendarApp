@@ -242,13 +242,13 @@ def calendar_view(request):
         else:
             # Обычное (не повторяющееся) событие
             if event_data['date']:
+                print(event_data)
                 processed_events.append(event_data)
                 
                 day = event_data['date'].day
                 if day not in events_by_day:
                     events_by_day[day] = []
                 events_by_day[day].append(event_data)
-    
     # Сортируем события по времени
     for day in events_by_day:
         events_by_day[day] = sorted(
@@ -261,12 +261,12 @@ def calendar_view(request):
         processed_events,
         key=lambda x: (x['date'], x.get('start_time', '') if x.get('start_time') else '')
     )
-    
     # Подготавливаем JSON для шаблона
     events_json = []
     for event in processed_events:
         events_json.append({
             'id': event.get('id'),
+            'name': event.get('name', ''),
             'title': event.get('title'),
             'date': event.get('date').isoformat() if event.get('date') else '',
             'start_time': event.get('start_time'),
@@ -290,7 +290,7 @@ def calendar_view(request):
     if next_month > 12:
         next_month = 1
         next_year += 1
-    
+
     # Подготавливаем данные для шаблона
     context = {
         'year': year,
@@ -323,11 +323,12 @@ def analyze_docx_file(file_path):
                     "content": "Представь, что я сильный студент мгту им. баумана, который использует ии для выполнения работ."\
                     "Мне не нужны твои размышления, нужен только ответ согласно приложенному шаблону: "\
                     "по шкале от 1 до 10 оцени времязатратность и сложность выполнения всей работы согласно приложенному файлу"\
-                    " и ответь в формате \"времязатратность:число, сложность:число\" таким образом, чтобы мне было удобно вычленить ответ из http-ответа.",
+                    " и ответь СТРОГО в формате \"времязатратность:число, сложность:число\" таким образом, чтобы мне было удобно вычленить ответ из http-ответа.",
                     "attachments": [file_response.id_],
                 }
             ],
-            "temperature": 0.2
+            "temperature": 0.1,
+            "top_p": 0.1
         }
     )
     results = list(filter(lambda x: x != "", analyze_res.choices[0].message.content.replace("*", "").split(" ")))
@@ -529,21 +530,53 @@ def get_ai_analysis(request):
     """Получает случайный текст для анализа"""
     try:
         # Вариант 1: Получаем случайный текст с lorem-ipsum API
-        response = requests.get('https://loripsum.net/api/1/short/plaintext', timeout=5)
+        #response = requests.get('https://loripsum.net/api/1/short/plaintext', timeout=5)
+
+        filepath = "calendar_app/events.json"
         
-        # Проверяем статус ответа
-        if response.status_code == 200:
-            text = response.text.strip()
-            return JsonResponse({
+
+        with open(filepath, 'r') as json_file:
+            data = json.load(json_file)
+
+        # 2. Convert the Python dictionary/list to a JSON-formatted string
+        # You can use 'indent=4' for readability (pretty-print)
+        json_string = json.dumps(data, indent=4)
+
+        # 3. Write the string to a TXT file
+        with open('events.txt', 'w') as txt_file:
+            txt_file.write(json_string)
+
+
+        file_response = giga.upload_file(open("events.txt", 'rb'))
+
+        analyze_res = giga.chat(
+        {
+            "function_call": "auto",
+            "messages": [
+                {
+                    "role": "user",
+                    "content": "Представь, что я сильный студент мгту им. баумана, который использует ии для тайм-менеджмента."\
+                    "Я прикрепляю расписание своих дедлайнов к этому запросу в формате json. Там указаны названия дедлайнов, по каким они предметам, их времязаратность от 1 до 10, сложность от 1 до 10 и дата дедлайна"\
+                    "Учитывай, что высокая времязатратность обозначает, что работу лучше растянуть на практически всё время, т.к. так могут обозначаться курсовые работы или дипломы"\
+                    "Предложи только то, над чем лучше поработать или подготовиться сегодня, а так же в ближайшие два дня. Ответь таким образом, чтобы мне было удобно вычленить ответ из http-ответа."\
+                    "Не форматируй текст каким либо образом, чтобы мне было легче его обработать. В конце предложений добавляй переход на новую строку, чтобы при получении запроса API у меня автоматически переносились строки."\
+                    "Мне не нужны твои размышления, нужен только ответ строго согласно приложенному шаблону: "\
+                    "Сегодня - предлагаю поработать над: *список дедлайнов*"\
+                    "Завтра - предлагаю поработать над: *список дедлайнов*"\
+                    "Послезавтра - предлагаю поработать над: *список дедлайнов*"\
+                    "(Дедлайны пишутся в формате Название - Предмет). На остальные поля не обращай внимание.",
+                    "attachments": [file_response.id_],
+                }
+            ],
+            "temperature": 0.1,
+            "top_p": 0.1
+        }
+        )
+
+        return JsonResponse({
                 'success': True,
-                'text': text[:500]  # Ограничиваем длину
-            })
-        else:
-            # Если не получилось, используем fallback текст
-            return JsonResponse({
-                'success': True,
-                'text': "Анализ расписания: Ваши дедлайны распределены равномерно. Рекомендуется начать с задания по математике, так как оно имеет высокую сложность."
-            })
+                'text': analyze_res.choices[0].message.content 
+        })
             
     except Exception as e:
         # В случае ошибки возвращаем fallback текст
@@ -551,6 +584,7 @@ def get_ai_analysis(request):
             'success': True,
             'text': f"ИИ-анализ временно недоступен. Техническая информация: {str(e)}"
         })
+
 
 @require_POST
 def upload_url(request):
@@ -578,7 +612,8 @@ def upload_url(request):
         converter = SimpleICSToJSONConverter()
         event_list = converter.parse_ics_content(webcal_text)
         event_storage = EventStorage()
-        event_storage.import_events_from_list(event_list)
+        print(event_storage.import_events_from_list(event_list))
+
         
         # Можно добавить в сессию для демонстрации
         

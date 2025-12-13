@@ -176,57 +176,65 @@ class EventStorage:
         
         for event in events:
             start_datetime_str = event.get('start_datetime')
-            if not start_datetime_str:
+            date_str = event.get('date')
+            if not start_datetime_str and not date_str:
                 continue
-                
-            try:
-                event_start = parse_date(start_datetime_str).date()
-                
-                # Проверяем события с повторениями
-                if event.get('rrule'):
-                    from dateutil.rrule import rrule, DAILY, WEEKLY, MONTHLY
+            if start_datetime_str:
+                try:
+                    event_start = parse_date(start_datetime_str).date()
                     
-                    rrule_data = event.get('rrule', {})
-                    freq_str = rrule_data.get('FREQ', 'WEEKLY')
-                    interval = rrule_data.get('INTERVAL', 1)
-                    until_str = rrule_data.get('UNTIL')
-                    
-                    # Преобразуем частоту
-                    freq_map = {'DAILY': DAILY, 'WEEKLY': WEEKLY, 'MONTHLY': MONTHLY}
-                    got_freq = freq_map.get(freq_str)
-                    
-                    if got_freq:
-                        event_datetime = parse_date(start_datetime_str)
+                    # Проверяем события с повторениями
+                    if event.get('rrule'):
+                        from dateutil.rrule import rrule, DAILY, WEEKLY, MONTHLY
                         
-                        # Определяем дату окончания
-                        until = None
-                        if until_str:
-                            try:
-                                until = parse_date(until_str)
-                            except:
-                                until = None
+                        rrule_data = event.get('rrule', {})
+                        freq_str = rrule_data.get('FREQ', 'WEEKLY')
+                        interval = rrule_data.get('INTERVAL', 1)
+                        until_str = rrule_data.get('UNTIL')
                         
-                        # Генерируем даты повторений и проверяем попадают ли они в нужный месяц
-                        dates = list(rrule(
-                            freq=got_freq,
-                            interval=interval,
-                            dtstart=event_datetime,
-                            until=until
-                        ))
+                        # Преобразуем частоту
+                        freq_map = {'DAILY': DAILY, 'WEEKLY': WEEKLY, 'MONTHLY': MONTHLY}
+                        got_freq = freq_map.get(freq_str)
                         
-                        for dt in dates:
-                            if dt.year == year and dt.month == month:
-                                result_events.append(event)
-                                break
-                else:
-                    # Обычное событие без повторений
+                        if got_freq:
+                            event_datetime = parse_date(start_datetime_str)
+                            
+                            # Определяем дату окончания
+                            until = None
+                            if until_str:
+                                try:
+                                    until = parse_date(until_str)
+                                except:
+                                    until = None
+                            
+                            # Генерируем даты повторений и проверяем попадают ли они в нужный месяц
+                            dates = list(rrule(
+                                freq=got_freq,
+                                interval=interval,
+                                dtstart=event_datetime,
+                                until=until
+                            ))
+                            
+                            for dt in dates:
+                                if dt.year == year and dt.month == month:
+                                    result_events.append(event)
+                                    break
+                    else:
+                        # Обычное событие без повторений
+                        if event_start.year == year and event_start.month == month:
+                            result_events.append(event)
+                            
+                except Exception as e:
+                    print(f"Error processing event for month: {e}")
+                    continue
+            else:
+                try:
+                    event_start = parse_date(date_str).date()
                     if event_start.year == year and event_start.month == month:
                         result_events.append(event)
-                        
-            except Exception as e:
-                print(f"Error processing event for month: {e}")
-                continue
-        
+                except Exception as e:
+                    print(f"Error processing event for month: {e}")
+                    continue
         return result_events
     
     def get_recurring_events(self):

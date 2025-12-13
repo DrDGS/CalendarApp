@@ -884,7 +884,7 @@
                 formData.append('csrfmiddlewaretoken', document.querySelector('[name=csrfmiddlewaretoken]').value);
                 
                 // Отправляем файл на сервер для анализа
-                const response = await fetch('/analyze-docx/', {  // Замените на ваш реальный endpoint
+                const response = await fetch('/analyze-docx/', {  
                     method: 'POST',
                     body: formData
                 });

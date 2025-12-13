@@ -1,0 +1,468 @@
+[
+    {
+        "id": "z9-opSPo0E0OT8dIdqhBd",
+        "title": "\u0410\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0430 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0445 \u0441\u0438\u0441\u0442\u0435\u043c",
+        "description": "\u0421\u0435\u043c\u0438\u043d\u0430\u0440",
+        "location": "\u043a\u0430\u0444. \u0418\u04233",
+        "start_datetime": "2025-09-08T14:05:00",
+        "end_datetime": "2025-09-08T15:35:00",
+        "all_day": false,
+        "created": "2025-12-13T12:08:12.456532",
+        "last_modified": "2025-12-13T12:08:12.456539",
+        "rrule": {
+            "FREQ": "WEEKLY",
+            "UNTIL": "2026-01-05T00:00:00",
+            "INTERVAL": 2
+        },
+        "metadata": {
+            "source": "ics",
+            "converted_at": "2025-12-13T12:08:12.456540",
+            "timezone": "UTC",
+            "imported_at": "2025-12-13T12:08:12.457072"
+        }
+    },
+    {
+        "id": "gbmjhnvKSH5KBrSo0nToQ",
+        "title": "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0430\u043d\u0430\u043b\u0438\u0437 \u0438 \u043f\u0440\u043e\u0433\u043d\u043e\u0437\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435",
+        "description": "\u041b\u0435\u043a\u0446\u0438\u044f",
+        "location": "A1 \u0413\u0423\u041a\\, 424\u044e",
+        "start_datetime": "2025-09-01T15:55:00",
+        "end_datetime": "2025-09-01T17:25:00",
+        "all_day": false,
+        "created": "2025-12-13T12:08:12.456567",
+        "last_modified": "2025-12-13T12:08:12.456568",
+        "rrule": {
+            "FREQ": "WEEKLY",
+            "UNTIL": "2026-01-05T00:00:00"
+        },
+        "metadata": {
+            "source": "ics",
+            "converted_at": "2025-12-13T12:08:12.456570",
+            "timezone": "UTC",
+            "imported_at": "2025-12-13T12:08:12.457076"
+        }
+    },
+    {
+        "id": "lhkmcQ40sBGYcf90KapIJ",
+        "title": "\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0435 \u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0438",
+        "description": "\u041b\u0435\u043a\u0446\u0438\u044f",
+        "location": "A1 \u0413\u0423\u041a\\, 306\u044e",
+        "start_datetime": "2025-09-01T17:35:00",
+        "end_datetime": "2025-09-01T19:05:00",
+        "all_day": false,
+        "created": "2025-12-13T12:08:12.456588",
+        "last_modified": "2025-12-13T12:08:12.456590",
+        "rrule": {
+            "FREQ": "WEEKLY",
+            "UNTIL": "2026-01-05T00:00:00"
+        },
+        "metadata": {
+            "source": "ics",
+            "converted_at": "2025-12-13T12:08:12.456591",
+            "timezone": "UTC",
+            "imported_at": "2025-12-13T12:08:12.457078"
+        }
+    },
+    {
+        "id": "FRVsb6p7SF3wDSxuNQHDe",
+        "title": "\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0435 \u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0438",
+        "description": "\u0421\u0435\u043c\u0438\u043d\u0430\u0440",
+        "location": "A1 \u0413\u0423\u041a\\, 430",
+        "start_datetime": "2025-09-08T19:15:00",
+        "end_datetime": "2025-09-08T20:45:00",
+        "all_day": false,
+        "created": "2025-12-13T12:08:12.456608",
+        "last_modified": "2025-12-13T12:08:12.456609",
+        "rrule": {
+            "FREQ": "WEEKLY",
+            "UNTIL": "2026-01-05T00:00:00",
+            "INTERVAL": 2
+        },
+        "metadata": {
+            "source": "ics",
+            "converted_at": "2025-12-13T12:08:12.456610",
+            "timezone": "UTC",
+            "imported_at": "2025-12-13T12:08:12.457080"
+        }
+    },
+    {
+        "id": "JJiEDeloKKXFenSUebIhM",
+        "title": "\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0435 \u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0438",
+        "description": "\u041b\u0435\u043a\u0446\u0438\u044f",
+        "location": "A1 \u0413\u0423\u041a\\, 306\u044e",
+        "start_datetime": "2025-09-01T19:15:00",
+        "end_datetime": "2025-09-01T20:45:00",
+        "all_day": false,
+        "created": "2025-12-13T12:08:12.456627",
+        "last_modified": "2025-12-13T12:08:12.456628",
+        "rrule": {
+            "FREQ": "WEEKLY",
+            "UNTIL": "2026-01-05T00:00:00",
+            "INTERVAL": 2
+        },
+        "metadata": {
+            "source": "ics",
+            "converted_at": "2025-12-13T12:08:12.456629",
+            "timezone": "UTC",
+            "imported_at": "2025-12-13T12:08:12.457081"
+        }
+    },
+    {
+        "id": "I3ieX7cjJP2Z0SukEtcUK",
+        "title": "\u0412\u0423\u0426",
+        "description": "",
+        "location": "",
+        "start_datetime": "2025-09-02T08:30:00",
+        "end_datetime": "2025-09-02T10:00:00",
+        "all_day": false,
+        "created": "2025-12-13T12:08:12.456644",
+        "last_modified": "2025-12-13T12:08:12.456645",
+        "rrule": {
+            "FREQ": "WEEKLY",
+            "UNTIL": "2026-01-05T00:00:00"
+        },
+        "metadata": {
+            "source": "ics",
+            "converted_at": "2025-12-13T12:08:12.456646",
+            "timezone": "UTC",
+            "imported_at": "2025-12-13T12:08:12.457083"
+        }
+    },
+    {
+        "id": "VRGKq97IRqsLigBHUQIt7",
+        "title": "\u0412\u0423\u0426",
+        "description": "",
+        "location": "",
+        "start_datetime": "2025-09-02T10:10:00",
+        "end_datetime": "2025-09-02T11:40:00",
+        "all_day": false,
+        "created": "2025-12-13T12:08:12.456661",
+        "last_modified": "2025-12-13T12:08:12.456662",
+        "rrule": {
+            "FREQ": "WEEKLY",
+            "UNTIL": "2026-01-05T00:00:00"
+        },
+        "metadata": {
+            "source": "ics",
+            "converted_at": "2025-12-13T12:08:12.456663",
+            "timezone": "UTC",
+            "imported_at": "2025-12-13T12:08:12.457084"
+        }
+    },
+    {
+        "id": "Caw2r_3A_njpasusVj-As",
+        "title": "\u0412\u0423\u0426",
+        "description": "",
+        "location": "",
+        "start_datetime": "2025-09-02T11:50:00",
+        "end_datetime": "2025-09-02T13:55:00",
+        "all_day": false,
+        "created": "2025-12-13T12:08:12.456676",
+        "last_modified": "2025-12-13T12:08:12.456678",
+        "rrule": {
+            "FREQ": "WEEKLY",
+            "UNTIL": "2026-01-05T00:00:00"
+        },
+        "metadata": {
+            "source": "ics",
+            "converted_at": "2025-12-13T12:08:12.456679",
+            "timezone": "UTC",
+            "imported_at": "2025-12-13T12:08:12.457086"
+        }
+    },
+    {
+        "id": "vDqjK-wB7-cqP98ac-JHn",
+        "title": "\u0412\u0423\u0426",
+        "description": "",
+        "location": "",
+        "start_datetime": "2025-09-02T14:05:00",
+        "end_datetime": "2025-09-02T15:35:00",
+        "all_day": false,
+        "created": "2025-12-13T12:08:12.456692",
+        "last_modified": "2025-12-13T12:08:12.456693",
+        "rrule": {
+            "FREQ": "WEEKLY",
+            "UNTIL": "2026-01-05T00:00:00"
+        },
+        "metadata": {
+            "source": "ics",
+            "converted_at": "2025-12-13T12:08:12.456694",
+            "timezone": "UTC",
+            "imported_at": "2025-12-13T12:08:12.457088"
+        }
+    },
+    {
+        "id": "DKHg_XzVE_abGX8SxK0_7",
+        "title": "\u0421\u0430\u043c\u043e\u0441\u0442\u043e\u044f\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u0440\u0430\u0431\u043e\u0442\u0430",
+        "description": "",
+        "location": "",
+        "start_datetime": "2025-09-03T10:10:00",
+        "end_datetime": "2025-09-03T11:40:00",
+        "all_day": false,
+        "created": "2025-12-13T12:08:12.456708",
+        "last_modified": "2025-12-13T12:08:12.456709",
+        "rrule": {
+            "FREQ": "WEEKLY",
+            "UNTIL": "2026-01-05T00:00:00"
+        },
+        "metadata": {
+            "source": "ics",
+            "converted_at": "2025-12-13T12:08:12.456710",
+            "timezone": "UTC",
+            "imported_at": "2025-12-13T12:08:12.457089"
+        }
+    },
+    {
+        "id": "cP4zB4eYK3mjgPs-64RmN",
+        "title": "\u0418\u043d\u0442\u0435\u043b\u043b\u0435\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u044b\u0435 \u0441\u0438\u0441\u0442\u0435\u043c\u044b \u0438 \u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0438",
+        "description": "\u041b\u0435\u043a\u0446\u0438\u044f",
+        "location": "A1 \u0413\u0423\u041a\\, 514",
+        "start_datetime": "2025-09-04T14:05:00",
+        "end_datetime": "2025-09-04T15:35:00",
+        "all_day": false,
+        "created": "2025-12-13T12:08:12.456731",
+        "last_modified": "2025-12-13T12:08:12.456732",
+        "rrule": {
+            "FREQ": "WEEKLY",
+            "UNTIL": "2026-01-05T00:00:00"
+        },
+        "metadata": {
+            "source": "ics",
+            "converted_at": "2025-12-13T12:08:12.456733",
+            "timezone": "UTC",
+            "imported_at": "2025-12-13T12:08:12.457091"
+        }
+    },
+    {
+        "id": "I1KwyjUmhfQy12SDemjF3",
+        "title": "\u041c\u0435\u0442\u043e\u0434\u044b \u0438 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430 \u043f\u0440\u043e\u0435\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0445 \u0441\u0438\u0441\u0442\u0435\u043c \u0438 \u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0439",
+        "description": "\u041b\u0435\u043a\u0446\u0438\u044f",
+        "location": "A1 \u0413\u0423\u041a\\, 514",
+        "start_datetime": "2025-09-04T15:55:00",
+        "end_datetime": "2025-09-04T17:25:00",
+        "all_day": false,
+        "created": "2025-12-13T12:08:12.456748",
+        "last_modified": "2025-12-13T12:08:12.456749",
+        "rrule": {
+            "FREQ": "WEEKLY",
+            "UNTIL": "2026-01-05T00:00:00"
+        },
+        "metadata": {
+            "source": "ics",
+            "converted_at": "2025-12-13T12:08:12.456751",
+            "timezone": "UTC",
+            "imported_at": "2025-12-13T12:08:12.457093"
+        }
+    },
+    {
+        "id": "UNj-fvGLpFibzTRNsgCL6",
+        "title": "\u0418\u043d\u0442\u0435\u043b\u043b\u0435\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u044b\u0435 \u0441\u0438\u0441\u0442\u0435\u043c\u044b \u0438 \u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0438",
+        "description": "\u0421\u0435\u043c\u0438\u043d\u0430\u0440",
+        "location": "A1 \u0413\u0423\u041a\\, 382",
+        "start_datetime": "2025-09-04T17:35:00",
+        "end_datetime": "2025-09-04T19:05:00",
+        "all_day": false,
+        "created": "2025-12-13T12:08:12.456773",
+        "last_modified": "2025-12-13T12:08:12.456774",
+        "rrule": {
+            "FREQ": "WEEKLY",
+            "UNTIL": "2026-01-05T00:00:00",
+            "INTERVAL": 2
+        },
+        "metadata": {
+            "source": "ics",
+            "converted_at": "2025-12-13T12:08:12.456775",
+            "timezone": "UTC",
+            "imported_at": "2025-12-13T12:08:12.457095"
+        }
+    },
+    {
+        "id": "FQ1cuWCvLjBo_BpJB62-8",
+        "title": "\u041c\u0435\u0442\u043e\u0434\u044b \u0438 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430 \u043f\u0440\u043e\u0435\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0445 \u0441\u0438\u0441\u0442\u0435\u043c \u0438 \u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0439",
+        "description": "\u0421\u0435\u043c\u0438\u043d\u0430\u0440",
+        "location": "A1 \u0413\u0423\u041a\\, 514",
+        "start_datetime": "2025-09-11T17:35:00",
+        "end_datetime": "2025-09-11T19:05:00",
+        "all_day": false,
+        "created": "2025-12-13T12:08:12.456842",
+        "last_modified": "2025-12-13T12:08:12.456843",
+        "rrule": {
+            "FREQ": "WEEKLY",
+            "UNTIL": "2026-01-05T00:00:00",
+            "INTERVAL": 2
+        },
+        "metadata": {
+            "source": "ics",
+            "converted_at": "2025-12-13T12:08:12.456844",
+            "timezone": "UTC",
+            "imported_at": "2025-12-13T12:08:12.457096"
+        }
+    },
+    {
+        "id": "Mo8NvBDoRBj6LMe7KHmEZ",
+        "title": "\u0411\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c \u0436\u0438\u0437\u043d\u0435\u0434\u0435\u044f\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u0438",
+        "description": "\u041b\u0435\u043a\u0446\u0438\u044f",
+        "location": "A1 \u0413\u0423\u041a\\, 514",
+        "start_datetime": "2025-09-04T19:15:00",
+        "end_datetime": "2025-09-04T20:45:00",
+        "all_day": false,
+        "created": "2025-12-13T12:08:12.456859",
+        "last_modified": "2025-12-13T12:08:12.456861",
+        "rrule": {
+            "FREQ": "WEEKLY",
+            "UNTIL": "2026-01-05T00:00:00"
+        },
+        "metadata": {
+            "source": "ics",
+            "converted_at": "2025-12-13T12:08:12.456862",
+            "timezone": "UTC",
+            "imported_at": "2025-12-13T12:08:12.457098"
+        }
+    },
+    {
+        "id": "7cwM-R3cd9gSY_1FoyWcL",
+        "title": "\u0410\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0430 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0445 \u0441\u0438\u0441\u0442\u0435\u043c",
+        "description": "\u041b\u0435\u043a\u0446\u0438\u044f",
+        "location": "A1 \u0413\u0423\u041a\\, 306\u044e",
+        "start_datetime": "2025-09-05T11:50:00",
+        "end_datetime": "2025-09-05T13:20:00",
+        "all_day": false,
+        "created": "2025-12-13T12:08:12.456876",
+        "last_modified": "2025-12-13T12:08:12.456877",
+        "rrule": {
+            "FREQ": "WEEKLY",
+            "UNTIL": "2026-01-05T00:00:00"
+        },
+        "metadata": {
+            "source": "ics",
+            "converted_at": "2025-12-13T12:08:12.456878",
+            "timezone": "UTC",
+            "imported_at": "2025-12-13T12:08:12.457100"
+        }
+    },
+    {
+        "id": "P5nCrX7Gjt19TDaS7zZBU",
+        "title": "\u0422\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0438 \u043f\u043e\u0438\u0441\u043a\u0430 \u0438 \u0430\u043d\u0430\u043b\u0438\u0437\u0430 \u043f\u0435\u0440\u0441\u043e\u043d\u0438\u0444\u0438\u0446\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u043e\u0439 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438",
+        "description": "\u041b\u0435\u043a\u0446\u0438\u044f",
+        "location": "A1 \u0413\u0423\u041a\\, 527",
+        "start_datetime": "2025-09-12T14:05:00",
+        "end_datetime": "2025-09-12T15:35:00",
+        "all_day": false,
+        "created": "2025-12-13T12:08:12.456894",
+        "last_modified": "2025-12-13T12:08:12.456895",
+        "rrule": {
+            "FREQ": "WEEKLY",
+            "UNTIL": "2026-01-05T00:00:00",
+            "INTERVAL": 2
+        },
+        "metadata": {
+            "source": "ics",
+            "converted_at": "2025-12-13T12:08:12.456896",
+            "timezone": "UTC",
+            "imported_at": "2025-12-13T12:08:12.457102"
+        }
+    },
+    {
+        "id": "6DMXKsHfRZHikPqofWhoC",
+        "title": "\u042d\u043a\u043e\u043d\u043e\u043c\u0438\u043a\u0430 \u0447\u0430\u0441\u0442\u044c 1",
+        "description": "\u041b\u0435\u043a\u0446\u0438\u044f",
+        "location": "A1 \u0413\u0423\u041a\\, 527",
+        "start_datetime": "2025-09-05T14:05:00",
+        "end_datetime": "2025-09-05T15:35:00",
+        "all_day": false,
+        "created": "2025-12-13T12:08:12.456911",
+        "last_modified": "2025-12-13T12:08:12.456912",
+        "rrule": {
+            "FREQ": "WEEKLY",
+            "UNTIL": "2026-01-05T00:00:00",
+            "INTERVAL": 2
+        },
+        "metadata": {
+            "source": "ics",
+            "converted_at": "2025-12-13T12:08:12.456913",
+            "timezone": "UTC",
+            "imported_at": "2025-12-13T12:08:12.457104"
+        }
+    },
+    {
+        "id": "ee58GtU2REa9_WlscQdG2",
+        "title": "\u0411\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c \u0436\u0438\u0437\u043d\u0435\u0434\u0435\u044f\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u0438",
+        "description": "\u0421\u0435\u043c\u0438\u043d\u0430\u0440",
+        "location": "A1 \u0413\u0423\u041a\\, 392",
+        "start_datetime": "2025-09-12T15:55:00",
+        "end_datetime": "2025-09-12T17:25:00",
+        "all_day": false,
+        "created": "2025-12-13T12:08:12.456928",
+        "last_modified": "2025-12-13T12:08:12.456929",
+        "rrule": {
+            "FREQ": "WEEKLY",
+            "UNTIL": "2026-01-05T00:00:00",
+            "INTERVAL": 2
+        },
+        "metadata": {
+            "source": "ics",
+            "converted_at": "2025-12-13T12:08:12.456930",
+            "timezone": "UTC",
+            "imported_at": "2025-12-13T12:08:12.457106"
+        }
+    },
+    {
+        "id": "saCyd3lyGTlYIrfcw2LpQ",
+        "title": "\u042d\u043a\u043e\u043d\u043e\u043c\u0438\u043a\u0430 \u0447\u0430\u0441\u0442\u044c 1",
+        "description": "\u0421\u0435\u043c\u0438\u043d\u0430\u0440",
+        "location": "A1 \u0413\u0423\u041a\\, 424",
+        "start_datetime": "2025-09-05T15:55:00",
+        "end_datetime": "2025-09-05T17:25:00",
+        "all_day": false,
+        "created": "2025-12-13T12:08:12.456946",
+        "last_modified": "2025-12-13T12:08:12.456947",
+        "rrule": {
+            "FREQ": "WEEKLY",
+            "UNTIL": "2026-01-05T00:00:00",
+            "INTERVAL": 2
+        },
+        "metadata": {
+            "source": "ics",
+            "converted_at": "2025-12-13T12:08:12.456948",
+            "timezone": "UTC",
+            "imported_at": "2025-12-13T12:08:12.457108"
+        }
+    },
+    {
+        "id": "HmavntCnARhy886cBVmDA",
+        "title": "\u0421\u0430\u043c\u043e\u0441\u0442\u043e\u044f\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u0440\u0430\u0431\u043e\u0442\u0430",
+        "description": "",
+        "location": "",
+        "start_datetime": "2025-09-06T10:10:00",
+        "end_datetime": "2025-09-06T11:40:00",
+        "all_day": false,
+        "created": "2025-12-13T12:08:12.456963",
+        "last_modified": "2025-12-13T12:08:12.456964",
+        "rrule": {
+            "FREQ": "WEEKLY",
+            "UNTIL": "2026-01-05T00:00:00"
+        },
+        "metadata": {
+            "source": "ics",
+            "converted_at": "2025-12-13T12:08:12.456965",
+            "timezone": "UTC",
+            "imported_at": "2025-12-13T12:08:12.457110"
+        }
+    },
+    {
+        "name": "\u041b\u0430\u0431\u043e\u0440\u0430\u0442\u043e\u0440\u043d\u0430\u044f \u0440\u0430\u0431\u043e\u0442\u0430",
+        "subject": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435",
+        "difficulty": 3,
+        "time_required": 4,
+        "date": "2025-12-25",
+        "file_url": "/media/deadlines/%D0%9B%D0%B0%D0%B1%D0%B02_QYmKjHY.docx",
+        "file_name": "\u041b\u0430\u0431\u04302.docx",
+        "id": "be06c97e8ac84004a482",
+        "created": "2025-12-13T12:09:03.560196",
+        "last_modified": "2025-12-13T12:09:03.560209",
+        "metadata": {
+            "source": "manual",
+            "converted_at": "2025-12-13T12:09:03.560211"
+        }
+    }
+]
