@@ -1,47 +1,482 @@
 [
   {
-    "id": 1,
-    "name": "Сдача курсовой работы",
-    "subject": "Программирование",
-    "difficulty": 8,
-    "time_required": 7,
-    "date": "2025-12-11",
-    "created_at": "2025-12-10 14:30:00"
+    "id": "pzxtBFApof-ZaVvbPAltb",
+    "title": "Архитектура информационных систем",
+    "description": "Семинар",
+    "location": "каф. ИУ3",
+    "start_datetime": "2025-09-08T14:05:00",
+    "end_datetime": "2025-09-08T15:35:00",
+    "all_day": false,
+    "created": "2025-12-13T02:52:21.613696",
+    "last_modified": "2025-12-13T02:52:21.613706",
+    "rrule": {
+      "FREQ": "WEEKLY",
+      "UNTIL": "2026-01-05T00:00:00",
+      "INTERVAL": 2
+    },
+    "metadata": {
+      "source": "ics",
+      "converted_at": "2025-12-13T02:52:21.613708",
+      "timezone": "UTC",
+      "imported_at": "2025-12-13T02:52:21.614704"
+    }
   },
   {
-    "id": 2,
-    "name": "Экзамен по математике",
-    "subject": "Математика",
-    "difficulty": 9,
-    "time_required": 10,
-    "date": "2025-12-12",
-    "created_at": "2025-12-10 15:45:00"
+    "id": "8e-xDwEjI54tsOt_VeO8w",
+    "title": "Статистический анализ и прогнозирование",
+    "description": "Лекция",
+    "location": "A1 ГУК\\, 424ю",
+    "start_datetime": "2025-09-01T15:55:00",
+    "end_datetime": "2025-09-01T17:25:00",
+    "all_day": false,
+    "created": "2025-12-13T02:52:21.613741",
+    "last_modified": "2025-12-13T02:52:21.613743",
+    "rrule": {
+      "FREQ": "WEEKLY",
+      "UNTIL": "2026-01-05T00:00:00"
+    },
+    "metadata": {
+      "source": "ics",
+      "converted_at": "2025-12-13T02:52:21.613744",
+      "timezone": "UTC",
+      "imported_at": "2025-12-13T02:52:21.614710"
+    }
   },
   {
-    "id": 3,
-    "name": "Лабораторная работа по физике",
-    "subject": "Физика",
-    "difficulty": 6,
-    "time_required": 5,
-    "date": "2025-12-15",
-    "created_at": "2025-12-10 16:20:00"
+    "id": "tjCWaymzRn_r1CljGpvxb",
+    "title": "Информационные технологии",
+    "description": "Лекция",
+    "location": "A1 ГУК\\, 306ю",
+    "start_datetime": "2025-09-01T17:35:00",
+    "end_datetime": "2025-09-01T19:05:00",
+    "all_day": false,
+    "created": "2025-12-13T02:52:21.613769",
+    "last_modified": "2025-12-13T02:52:21.613771",
+    "rrule": {
+      "FREQ": "WEEKLY",
+      "UNTIL": "2026-01-05T00:00:00"
+    },
+    "metadata": {
+      "source": "ics",
+      "converted_at": "2025-12-13T02:52:21.613772",
+      "timezone": "UTC",
+      "imported_at": "2025-12-13T02:52:21.614712"
+    }
   },
   {
-    "id": 4,
-    "name": "Проект по истории",
-    "subject": "История",
-    "difficulty": 4,
-    "time_required": 6,
-    "date": "2025-12-20",
-    "created_at": "2025-12-10 17:10:00"
+    "id": "fJNFQkLmBi9tMoWJItyNz",
+    "title": "Информационные технологии",
+    "description": "Семинар",
+    "location": "A1 ГУК\\, 430",
+    "start_datetime": "2025-09-08T19:15:00",
+    "end_datetime": "2025-09-08T20:45:00",
+    "all_day": false,
+    "created": "2025-12-13T02:52:21.613797",
+    "last_modified": "2025-12-13T02:52:21.613799",
+    "rrule": {
+      "FREQ": "WEEKLY",
+      "UNTIL": "2026-01-05T00:00:00",
+      "INTERVAL": 2
+    },
+    "metadata": {
+      "source": "ics",
+      "converted_at": "2025-12-13T02:52:21.613800",
+      "timezone": "UTC",
+      "imported_at": "2025-12-13T02:52:21.614713"
+    }
   },
   {
-    "id": 5,
-    "name": "Зачет по английскому языку",
+    "id": "KNCIv0-7IucLIzFT62bki",
+    "title": "Информационные технологии",
+    "description": "Лекция",
+    "location": "A1 ГУК\\, 306ю",
+    "start_datetime": "2025-09-01T19:15:00",
+    "end_datetime": "2025-09-01T20:45:00",
+    "all_day": false,
+    "created": "2025-12-13T02:52:21.613826",
+    "last_modified": "2025-12-13T02:52:21.613828",
+    "rrule": {
+      "FREQ": "WEEKLY",
+      "UNTIL": "2026-01-05T00:00:00",
+      "INTERVAL": 2
+    },
+    "metadata": {
+      "source": "ics",
+      "converted_at": "2025-12-13T02:52:21.613829",
+      "timezone": "UTC",
+      "imported_at": "2025-12-13T02:52:21.614715"
+    }
+  },
+  {
+    "id": "sJ9541J62WGO56yH-ZFWj",
+    "title": "ВУЦ",
+    "description": "",
+    "location": "",
+    "start_datetime": "2025-09-02T08:30:00",
+    "end_datetime": "2025-09-02T10:00:00",
+    "all_day": false,
+    "created": "2025-12-13T02:52:21.613851",
+    "last_modified": "2025-12-13T02:52:21.613853",
+    "rrule": {
+      "FREQ": "WEEKLY",
+      "UNTIL": "2026-01-05T00:00:00"
+    },
+    "metadata": {
+      "source": "ics",
+      "converted_at": "2025-12-13T02:52:21.613855",
+      "timezone": "UTC",
+      "imported_at": "2025-12-13T02:52:21.614716"
+    }
+  },
+  {
+    "id": "gBdve0o-_r-xEtrf-GS-T",
+    "title": "ВУЦ",
+    "description": "",
+    "location": "",
+    "start_datetime": "2025-09-02T10:10:00",
+    "end_datetime": "2025-09-02T11:40:00",
+    "all_day": false,
+    "created": "2025-12-13T02:52:21.613877",
+    "last_modified": "2025-12-13T02:52:21.613879",
+    "rrule": {
+      "FREQ": "WEEKLY",
+      "UNTIL": "2026-01-05T00:00:00"
+    },
+    "metadata": {
+      "source": "ics",
+      "converted_at": "2025-12-13T02:52:21.613880",
+      "timezone": "UTC",
+      "imported_at": "2025-12-13T02:52:21.614718"
+    }
+  },
+  {
+    "id": "9b6_0sqj3gbLDHOxnPVf8",
+    "title": "ВУЦ",
+    "description": "",
+    "location": "",
+    "start_datetime": "2025-09-02T11:50:00",
+    "end_datetime": "2025-09-02T13:55:00",
+    "all_day": false,
+    "created": "2025-12-13T02:52:21.613904",
+    "last_modified": "2025-12-13T02:52:21.613905",
+    "rrule": {
+      "FREQ": "WEEKLY",
+      "UNTIL": "2026-01-05T00:00:00"
+    },
+    "metadata": {
+      "source": "ics",
+      "converted_at": "2025-12-13T02:52:21.613907",
+      "timezone": "UTC",
+      "imported_at": "2025-12-13T02:52:21.614720"
+    }
+  },
+  {
+    "id": "byc4uIuM_PTQL6bKaPcTW",
+    "title": "ВУЦ",
+    "description": "",
+    "location": "",
+    "start_datetime": "2025-09-02T14:05:00",
+    "end_datetime": "2025-09-02T15:35:00",
+    "all_day": false,
+    "created": "2025-12-13T02:52:21.613929",
+    "last_modified": "2025-12-13T02:52:21.613931",
+    "rrule": {
+      "FREQ": "WEEKLY",
+      "UNTIL": "2026-01-05T00:00:00"
+    },
+    "metadata": {
+      "source": "ics",
+      "converted_at": "2025-12-13T02:52:21.613933",
+      "timezone": "UTC",
+      "imported_at": "2025-12-13T02:52:21.614721"
+    }
+  },
+  {
+    "id": "0L5amZgGjIK2haIBdAIkg",
+    "title": "Самостоятельная работа",
+    "description": "",
+    "location": "",
+    "start_datetime": "2025-09-03T10:10:00",
+    "end_datetime": "2025-09-03T11:40:00",
+    "all_day": false,
+    "created": "2025-12-13T02:52:21.613957",
+    "last_modified": "2025-12-13T02:52:21.613979",
+    "rrule": {
+      "FREQ": "WEEKLY",
+      "UNTIL": "2026-01-05T00:00:00"
+    },
+    "metadata": {
+      "source": "ics",
+      "converted_at": "2025-12-13T02:52:21.613980",
+      "timezone": "UTC",
+      "imported_at": "2025-12-13T02:52:21.614723"
+    }
+  },
+  {
+    "id": "n4mgD9f7HR2r38KaKU1QD",
+    "title": "Интеллектуальные системы и технологии",
+    "description": "Лекция",
+    "location": "A1 ГУК\\, 514",
+    "start_datetime": "2025-09-04T14:05:00",
+    "end_datetime": "2025-09-04T15:35:00",
+    "all_day": false,
+    "created": "2025-12-13T02:52:21.614008",
+    "last_modified": "2025-12-13T02:52:21.614010",
+    "rrule": {
+      "FREQ": "WEEKLY",
+      "UNTIL": "2026-01-05T00:00:00"
+    },
+    "metadata": {
+      "source": "ics",
+      "converted_at": "2025-12-13T02:52:21.614011",
+      "timezone": "UTC",
+      "imported_at": "2025-12-13T02:52:21.614725"
+    }
+  },
+  {
+    "id": "z6ODX3HGFdmk632SEu6fl",
+    "title": "Методы и средства проектирования информационных систем и технологий",
+    "description": "Лекция",
+    "location": "A1 ГУК\\, 514",
+    "start_datetime": "2025-09-04T15:55:00",
+    "end_datetime": "2025-09-04T17:25:00",
+    "all_day": false,
+    "created": "2025-12-13T02:52:21.614040",
+    "last_modified": "2025-12-13T02:52:21.614042",
+    "rrule": {
+      "FREQ": "WEEKLY",
+      "UNTIL": "2026-01-05T00:00:00"
+    },
+    "metadata": {
+      "source": "ics",
+      "converted_at": "2025-12-13T02:52:21.614044",
+      "timezone": "UTC",
+      "imported_at": "2025-12-13T02:52:21.614727"
+    }
+  },
+  {
+    "id": "DPEknSPBbNnqWYfNrY3Pn",
+    "title": "Интеллектуальные системы и технологии",
+    "description": "Семинар",
+    "location": "A1 ГУК\\, 382",
+    "start_datetime": "2025-09-04T17:35:00",
+    "end_datetime": "2025-09-04T19:05:00",
+    "all_day": false,
+    "created": "2025-12-13T02:52:21.614077",
+    "last_modified": "2025-12-13T02:52:21.614079",
+    "rrule": {
+      "FREQ": "WEEKLY",
+      "UNTIL": "2026-01-05T00:00:00",
+      "INTERVAL": 2
+    },
+    "metadata": {
+      "source": "ics",
+      "converted_at": "2025-12-13T02:52:21.614080",
+      "timezone": "UTC",
+      "imported_at": "2025-12-13T02:52:21.614729"
+    }
+  },
+  {
+    "id": "hFTNJSSke6PBw-rxa9CHW",
+    "title": "Методы и средства проектирования информационных систем и технологий",
+    "description": "Семинар",
+    "location": "A1 ГУК\\, 514",
+    "start_datetime": "2025-09-11T17:35:00",
+    "end_datetime": "2025-09-11T19:05:00",
+    "all_day": false,
+    "created": "2025-12-13T02:52:21.614109",
+    "last_modified": "2025-12-13T02:52:21.614111",
+    "rrule": {
+      "FREQ": "WEEKLY",
+      "UNTIL": "2026-01-05T00:00:00",
+      "INTERVAL": 2
+    },
+    "metadata": {
+      "source": "ics",
+      "converted_at": "2025-12-13T02:52:21.614113",
+      "timezone": "UTC",
+      "imported_at": "2025-12-13T02:52:21.614731"
+    }
+  },
+  {
+    "id": "di_wL60B_-GQVBL1vXA-j",
+    "title": "Безопасность жизнедеятельности",
+    "description": "Лекция",
+    "location": "A1 ГУК\\, 514",
+    "start_datetime": "2025-09-04T19:15:00",
+    "end_datetime": "2025-09-04T20:45:00",
+    "all_day": false,
+    "created": "2025-12-13T02:52:21.614142",
+    "last_modified": "2025-12-13T02:52:21.614145",
+    "rrule": {
+      "FREQ": "WEEKLY",
+      "UNTIL": "2026-01-05T00:00:00"
+    },
+    "metadata": {
+      "source": "ics",
+      "converted_at": "2025-12-13T02:52:21.614147",
+      "timezone": "UTC",
+      "imported_at": "2025-12-13T02:52:21.614733"
+    }
+  },
+  {
+    "id": "FFqMH_E3O1cdfilMLRSWo",
+    "title": "Архитектура информационных систем",
+    "description": "Лекция",
+    "location": "A1 ГУК\\, 306ю",
+    "start_datetime": "2025-09-05T11:50:00",
+    "end_datetime": "2025-09-05T13:20:00",
+    "all_day": false,
+    "created": "2025-12-13T02:52:21.614178",
+    "last_modified": "2025-12-13T02:52:21.614180",
+    "rrule": {
+      "FREQ": "WEEKLY",
+      "UNTIL": "2026-01-05T00:00:00"
+    },
+    "metadata": {
+      "source": "ics",
+      "converted_at": "2025-12-13T02:52:21.614183",
+      "timezone": "UTC",
+      "imported_at": "2025-12-13T02:52:21.614735"
+    }
+  },
+  {
+    "id": "rymkunEpk0z227PjmHOyo",
+    "title": "Технологии поиска и анализа персонифицированной информации",
+    "description": "Лекция",
+    "location": "A1 ГУК\\, 527",
+    "start_datetime": "2025-09-12T14:05:00",
+    "end_datetime": "2025-09-12T15:35:00",
+    "all_day": false,
+    "created": "2025-12-13T02:52:21.614209",
+    "last_modified": "2025-12-13T02:52:21.614211",
+    "rrule": {
+      "FREQ": "WEEKLY",
+      "UNTIL": "2026-01-05T00:00:00",
+      "INTERVAL": 2
+    },
+    "metadata": {
+      "source": "ics",
+      "converted_at": "2025-12-13T02:52:21.614213",
+      "timezone": "UTC",
+      "imported_at": "2025-12-13T02:52:21.614737"
+    }
+  },
+  {
+    "id": "2KXQ9LUQz6Rgf_d0234R5",
+    "title": "Экономика часть 1",
+    "description": "Лекция",
+    "location": "A1 ГУК\\, 527",
+    "start_datetime": "2025-09-05T14:05:00",
+    "end_datetime": "2025-09-05T15:35:00",
+    "all_day": false,
+    "created": "2025-12-13T02:52:21.614239",
+    "last_modified": "2025-12-13T02:52:21.614242",
+    "rrule": {
+      "FREQ": "WEEKLY",
+      "UNTIL": "2026-01-05T00:00:00",
+      "INTERVAL": 2
+    },
+    "metadata": {
+      "source": "ics",
+      "converted_at": "2025-12-13T02:52:21.614243",
+      "timezone": "UTC",
+      "imported_at": "2025-12-13T02:52:21.614739"
+    }
+  },
+  {
+    "id": "YZ8nJQVCfB9oGfE0KZbBR",
+    "title": "Безопасность жизнедеятельности",
+    "description": "Семинар",
+    "location": "A1 ГУК\\, 392",
+    "start_datetime": "2025-09-12T15:55:00",
+    "end_datetime": "2025-09-12T17:25:00",
+    "all_day": false,
+    "created": "2025-12-13T02:52:21.614270",
+    "last_modified": "2025-12-13T02:52:21.614272",
+    "rrule": {
+      "FREQ": "WEEKLY",
+      "UNTIL": "2026-01-05T00:00:00",
+      "INTERVAL": 2
+    },
+    "metadata": {
+      "source": "ics",
+      "converted_at": "2025-12-13T02:52:21.614274",
+      "timezone": "UTC",
+      "imported_at": "2025-12-13T02:52:21.614742"
+    }
+  },
+  {
+    "id": "CpHj2AZlWHg4lGSUsIv8d",
+    "title": "Экономика часть 1",
+    "description": "Семинар",
+    "location": "A1 ГУК\\, 424",
+    "start_datetime": "2025-09-05T15:55:00",
+    "end_datetime": "2025-09-05T17:25:00",
+    "all_day": false,
+    "created": "2025-12-13T02:52:21.614299",
+    "last_modified": "2025-12-13T02:52:21.614301",
+    "rrule": {
+      "FREQ": "WEEKLY",
+      "UNTIL": "2026-01-05T00:00:00",
+      "INTERVAL": 2
+    },
+    "metadata": {
+      "source": "ics",
+      "converted_at": "2025-12-13T02:52:21.614302",
+      "timezone": "UTC",
+      "imported_at": "2025-12-13T02:52:21.614744"
+    }
+  },
+  {
+    "id": "APlyE8SFaUbRenvV-exrU",
+    "title": "Самостоятельная работа",
+    "description": "",
+    "location": "",
+    "start_datetime": "2025-09-06T10:10:00",
+    "end_datetime": "2025-09-06T11:40:00",
+    "all_day": false,
+    "created": "2025-12-13T02:52:21.614325",
+    "last_modified": "2025-12-13T02:52:21.614327",
+    "rrule": {
+      "FREQ": "WEEKLY",
+      "UNTIL": "2026-01-05T00:00:00"
+    },
+    "metadata": {
+      "source": "ics",
+      "converted_at": "2025-12-13T02:52:21.614328",
+      "timezone": "UTC",
+      "imported_at": "2025-12-13T02:52:21.614746"
+    }
+  },
+  {
+    "name": "aadadf",
     "subject": "Английский язык",
+    "difficulty": 5,
+    "time_required": 5,
+    "date": "2025-12-21",
+    "id": "e9a6f5ca289e4059a7dc",
+    "created": "2025-12-13T02:52:51.613835",
+    "last_modified": "2025-12-13T02:52:51.613847",
+    "metadata": {
+      "source": "manual",
+      "converted_at": "2025-12-13T02:52:51.613848"
+    }
+  },
+  {
+    "name": "asdfasf",
+    "subject": "Программирование",
     "difficulty": 3,
-    "time_required": 4,
-    "date": "2026-01-06",
-    "created_at": "2025-12-10 18:00:00"
+    "time_required": 8,
+    "date": "2025-12-13",
+    "file_url": "/media/deadlines/%D0%9B%D0%B0%D0%B1%D0%B02.docx",
+    "file_name": "Лаба2.docx",
+    "id": "fe0e4e5a49364ce4bf2e",
+    "created": "2025-12-13T03:21:02.460709",
+    "last_modified": "2025-12-13T03:21:02.460724",
+    "metadata": {
+      "source": "manual",
+      "converted_at": "2025-12-13T03:21:02.460728"
+    }
   }
 ]

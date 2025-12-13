@@ -22,7 +22,7 @@
         }
         
         .container {
-            max-width: 600px;
+            max-width: 700px;
             width: 100%;
             background: white;
             border-radius: 15px;
@@ -58,6 +58,50 @@
             border-radius: 8px;
             margin-bottom: 20px;
             border-left: 4px solid #e74c3c;
+        }
+        
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #28a745;
+        }
+        
+        .info-message {
+            background-color: #e3f2fd;
+            color: #1565c0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .loading-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #4a6fa5;
+        }
+        
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #4a6fa5;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 15px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
         .form-group {
@@ -170,6 +214,151 @@
             outline: none;
         }
         
+        /* Стили для загрузки файла */
+        .file-upload {
+            position: relative;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        
+        .file-upload-input {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .file-upload-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 8px;
+            color: #6c757d;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .file-upload-label:hover {
+            background: #e9ecef;
+            border-color: #4a6fa5;
+        }
+        
+        .file-upload-label.dragover {
+            background: #e3f2fd;
+            border-color: #2196f3;
+            color: #2196f3;
+        }
+        
+        .file-icon {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .file-info {
+            margin-top: 10px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .file-name {
+            font-weight: 600;
+            color: #4a6fa5;
+            word-break: break-all;
+            margin-bottom: 5px;
+        }
+        
+        .file-size {
+            color: #6c757d;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+        
+        .analysis-results {
+            margin-top: 15px;
+            padding: 15px;
+            background: #e8f5e9;
+            border-radius: 8px;
+            border-left: 4px solid #4caf50;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .analysis-results h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .analysis-results .result-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #c8e6c9;
+        }
+        
+        .analysis-results .result-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .result-label {
+            color: #555;
+        }
+        
+        .result-value {
+            font-weight: bold;
+            color: #2e7d32;
+        }
+        
+        .remove-file {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        
+        .remove-file:hover {
+            background: #c0392b;
+        }
+        
+        .file-format-info {
+            margin-top: 5px;
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        
+        .ai-suggestion {
+            background: #e3f2fd;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #1565c0;
+            border-left: 3px solid #2196f3;
+        }
+        
         .form-actions {
             display: flex;
             justify-content: space-between;
@@ -210,6 +399,25 @@
             background: #e0e0e0;
         }
         
+        .btn-analyze {
+            background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+            color: white;
+            padding: 12px 25px;
+            font-size: 1rem;
+        }
+        
+        .btn-analyze:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
+        }
+        
+        .btn-analyze:disabled {
+            background: #b0bec5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
         .required {
             color: #e74c3c;
         }
@@ -222,6 +430,22 @@
             color: #2196f3;
             font-weight: bold;
             margin-bottom: 20px;
+        }
+        
+        .auto-detect-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .auto-detect-section h3 {
+            color: #4a6fa5;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         @media (max-width: 768px) {
@@ -258,13 +482,19 @@
                 </div>
             {% endif %}
             
+            {% if success %}
+                <div class="success-message">
+                    <strong>Успешно!</strong> {{ success }}
+                </div>
+            {% endif %}
+            
             {% if selected_date %}
                 <div class="date-display">
                     📅 Выбранная дата: {{ selected_date }}
                 </div>
             {% endif %}
             
-            <form method="POST" action="{% url 'calendar_app:add_event' %}">
+            <form id="deadlineForm" method="POST" action="{% url 'calendar_app:add_event' %}" enctype="multipart/form-data">
                 {% csrf_token %}
                 
                 {% if selected_date %}
@@ -296,6 +526,64 @@
                     <input type="text" id="custom_subject" name="custom_subject" class="form-control" 
                            style="margin-top: 10px; display: none;" 
                            placeholder="Введите название предмета">
+                </div>
+                
+                <!-- Секция автоматического определения сложности -->
+                <div class="auto-detect-section">
+                    <h3>🤖 Автоматическое определение параметров</h3>
+                    <p class="info-message" style="margin-bottom: 15px;">
+                        Загрузите файл с заданием (DOCX), и ИИ автоматически определит сложность и времязатратность!
+                    </p>
+                    
+                    <div class="form-group">
+                        <label for="document_file">Файл с заданием (DOCX)</label>
+                        <div class="file-upload">
+                            <input type="file" 
+                                   id="document_file" 
+                                   name="document_file" 
+                                   class="file-upload-input" 
+                                   accept=".docx,.doc"
+                                   data-max-size="10485760">
+                            <label for="document_file" class="file-upload-label" id="fileUploadLabel">
+                                <span class="file-icon">📄</span>
+                                <span id="fileLabelText">Перетащите DOCX файл сюда или нажмите для выбора</span>
+                            </label>
+                        </div>
+                        <div class="file-format-info">
+                            Поддерживаемые форматы: DOCX, DOC (макс. 10 МБ)
+                        </div>
+                        
+                        <div id="fileInfo" class="file-info" style="display: none;">
+                            <div class="file-name" id="fileName"></div>
+                            <div class="file-size" id="fileSize"></div>
+                            <button type="button" class="btn btn-analyze" id="analyzeBtn">
+                                🔍 Проанализировать файл
+                            </button>
+                            <button type="button" class="remove-file" id="removeFile">
+                                Удалить файл
+                            </button>
+                        </div>
+                        
+                        <div id="loadingIndicator" class="loading-indicator" style="display: none;">
+                            <div class="spinner"></div>
+                            <span>Анализирую файл... Это может занять несколько секунд</span>
+                        </div>
+                        
+                        <div id="analysisResults" class="analysis-results" style="display: none;">
+                            <h4>📊 Результаты анализа</h4>
+                            <div class="result-item">
+                                <span class="result-label">Определенная сложность:</span>
+                                <span class="result-value" id="detectedDifficulty">-</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Определенная времензатратность:</span>
+                                <span class="result-value" id="detectedTime">-</span>
+                            </div>
+                            <div class="ai-suggestion" id="aiSuggestion">
+                                Значения были автоматически установлены на основе анализа файла. Вы можете скорректировать их при необходимости.
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="form-row">
@@ -407,7 +695,6 @@
             if (this.value === 'other') {
                 customSubjectInput.style.display = 'block';
                 customSubjectInput.required = true;
-                // Переименовываем поле для корректной отправки
                 customSubjectInput.name = 'subject';
                 subjectSelect.disabled = true;
                 subjectSelect.name = '';
@@ -435,6 +722,272 @@
         if (!dateInput.value) {
             dateInput.value = today;
         }
+        
+        // Обработка загрузки файла и анализа
+        const fileInput = document.getElementById('document_file');
+        const fileUploadLabel = document.getElementById('fileUploadLabel');
+        const fileLabelText = document.getElementById('fileLabelText');
+        const fileInfo = document.getElementById('fileInfo');
+        const fileName = document.getElementById('fileName');
+        const fileSize = document.getElementById('fileSize');
+        const analyzeBtn = document.getElementById('analyzeBtn');
+        const removeFileBtn = document.getElementById('removeFile');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const analysisResults = document.getElementById('analysisResults');
+        const detectedDifficulty = document.getElementById('detectedDifficulty');
+        const detectedTime = document.getElementById('detectedTime');
+        const aiSuggestion = document.getElementById('aiSuggestion');
+        
+        const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 МБ
+        
+        // Форматирование размера файла
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Байт';
+            const k = 1024;
+            const sizes = ['Байт', 'КБ', 'МБ', 'ГБ'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+        
+        // Проверка типа файла
+        function isValidFileType(file) {
+            const validTypes = [
+                'application/msword',
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+            ];
+            return validTypes.includes(file.type);
+        }
+        
+        // Проверка расширения файла
+        function isValidFileExtension(filename) {
+            const validExtensions = ['.doc', '.docx'];
+            return validExtensions.some(ext => filename.toLowerCase().endsWith(ext));
+        }
+        
+        // Обработка выбора файла
+        fileInput.addEventListener('change', function(e) {
+            handleFileSelection(this.files[0]);
+        });
+        
+        // Обработка drag & drop
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            fileUploadLabel.addEventListener(eventName, preventDefaults, false);
+        });
+        
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        
+        ['dragenter', 'dragover'].forEach(eventName => {
+            fileUploadLabel.addEventListener(eventName, highlight, false);
+        });
+        
+        ['dragleave', 'drop'].forEach(eventName => {
+            fileUploadLabel.addEventListener(eventName, unhighlight, false);
+        });
+        
+        function highlight() {
+            fileUploadLabel.classList.add('dragover');
+        }
+        
+        function unhighlight() {
+            fileUploadLabel.classList.remove('dragover');
+        }
+        
+        fileUploadLabel.addEventListener('drop', function(e) {
+            const dt = e.dataTransfer;
+            const file = dt.files[0];
+            fileInput.files = dt.files;
+            handleFileSelection(file);
+        });
+        
+        // Обработка выбранного файла
+        function handleFileSelection(file) {
+            if (!file) return;
+            
+            // Проверка размера файла
+            if (file.size > MAX_FILE_SIZE) {
+                alert('Файл слишком большой. Максимальный размер: 10 МБ');
+                resetFileInput();
+                return;
+            }
+            
+            // Проверка типа файла
+            if (!isValidFileType(file) && !isValidFileExtension(file.name)) {
+                alert('Пожалуйста, загрузите файл в формате DOC или DOCX');
+                resetFileInput();
+                return;
+            }
+            
+            // Отображение информации о файле
+            fileName.textContent = file.name;
+            fileSize.textContent = formatFileSize(file.size);
+            fileInfo.style.display = 'block';
+            fileLabelText.textContent = 'Файл выбран';
+            fileUploadLabel.style.background = '#d4edda';
+            fileUploadLabel.style.borderColor = '#28a745';
+            
+            // Скрываем предыдущие результаты анализа
+            analysisResults.style.display = 'none';
+            
+            // Активируем кнопку анализа
+            analyzeBtn.disabled = false;
+        }
+        
+        // Удаление файла
+        removeFileBtn.addEventListener('click', function() {
+            resetFileInput();
+        });
+        
+        // Сброс поля файла
+        function resetFileInput() {
+            fileInput.value = '';
+            fileInfo.style.display = 'none';
+            analysisResults.style.display = 'none';
+            loadingIndicator.style.display = 'none';
+            fileLabelText.textContent = 'Перетащите DOCX файл сюда или нажмите для выбора';
+            fileUploadLabel.style.background = '';
+            fileUploadLabel.style.borderColor = '';
+            analyzeBtn.disabled = false;
+        }
+        
+        // Анализ файла
+        analyzeBtn.addEventListener('click', async function() {
+            if (!fileInput.files.length) {
+                alert('Пожалуйста, сначала выберите файл');
+                return;
+            }
+            
+            const file = fileInput.files[0];
+            
+            // Проверка файла
+            if (file.size > MAX_FILE_SIZE) {
+                alert('Файл слишком большой. Максимальный размер: 10 МБ');
+                return;
+            }
+            
+            if (!isValidFileType(file) && !isValidFileExtension(file.name)) {
+                alert('Пожалуйста, загрузите файл в формате DOC или DOCX');
+                return;
+            }
+            
+            // Показываем индикатор загрузки
+            loadingIndicator.style.display = 'flex';
+            analyzeBtn.disabled = true;
+            analysisResults.style.display = 'none';
+            
+            try {
+                // Создаем FormData для отправки файла
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('csrfmiddlewaretoken', document.querySelector('[name=csrfmiddlewaretoken]').value);
+                
+                // Отправляем файл на сервер для анализа
+                const response = await fetch('/analyze-docx/', {  // Замените на ваш реальный endpoint
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Ошибка при анализе файла');
+                }
+                
+                const data = await response.json();
+                
+                // Скрываем индикатор загрузки
+                loadingIndicator.style.display = 'none';
+                
+                if (data.success) {
+                    // Получаем значения от сервера
+                    const difficulty = data.difficulty;
+                    const timeRequired = data.time_required;
+                    
+                    // Обновляем отображение результатов
+                    detectedDifficulty.textContent = `${difficulty}/10`;
+                    detectedTime.textContent = `${timeRequired}/10`;
+                    
+                    // Устанавливаем значения в ползунки
+                    difficultySlider.value = difficulty;
+                    timeSlider.value = timeRequired;
+                    
+                    // Обновляем отображение ползунков
+                    updateSlider(difficultySlider, difficultyValue, difficultyMarker);
+                    updateSlider(timeSlider, timeValue, timeMarker);
+                    
+                    // Показываем дополнительные пояснения если есть
+                    if (data.explanation) {
+                        aiSuggestion.textContent = data.explanation;
+                    }
+                    
+                    // Показываем результаты
+                    analysisResults.style.display = 'block';
+                    
+                    // Показываем сообщение об успехе
+                    showSuccessMessage('Параметры успешно определены! Значения установлены автоматически.');
+                    
+                } else {
+                    throw new Error(data.error || 'Неизвестная ошибка при анализе');
+                }
+                
+            } catch (error) {
+                // Скрываем индикатор загрузки
+                loadingIndicator.style.display = 'none';
+                analyzeBtn.disabled = false;
+                
+                // Показываем сообщение об ошибке
+                alert('Ошибка при анализе файла: ' + error.message);
+                console.error('Ошибка анализа:', error);
+            }
+        });
+        
+        // Функция для показа временного сообщения об успехе
+        function showSuccessMessage(message) {
+            const successDiv = document.createElement('div');
+            successDiv.className = 'success-message';
+            successDiv.innerHTML = `<strong>Успех!</strong> ${message}`;
+            
+            const formContainer = document.querySelector('.form-container');
+            const firstChild = formContainer.firstChild;
+            formContainer.insertBefore(successDiv, firstChild);
+            
+            // Удаляем сообщение через 5 секунд
+            setTimeout(() => {
+                successDiv.remove();
+            }, 5000);
+        }
+        
+        // Валидация формы перед отправкой
+        const form = document.getElementById('deadlineForm');
+        form.addEventListener('submit', function(e) {
+            // Валидация файла, если он выбран
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                
+                if (file.size > MAX_FILE_SIZE) {
+                    e.preventDefault();
+                    alert('Файл слишком большой. Максимальный размер: 10 МБ');
+                    return;
+                }
+                
+                if (!isValidFileType(file) && !isValidFileExtension(file.name)) {
+                    e.preventDefault();
+                    alert('Пожалуйста, загрузите файл в формате DOC или DOCX');
+                    return;
+                }
+            }
+        });
+        
+        // Если есть значения из предыдущей отправки, показываем их
+        {% if form_data.difficulty %}
+            difficultySlider.value = {{ form_data.difficulty|default:'5' }};
+            updateSlider(difficultySlider, difficultyValue, difficultyMarker);
+        {% endif %}
+        
+        {% if form_data.time_required %}
+            timeSlider.value = {{ form_data.time_required|default:'5' }};
+            updateSlider(timeSlider, timeValue, timeMarker);
+        {% endif %}
     </script>
 </body>
 </html>

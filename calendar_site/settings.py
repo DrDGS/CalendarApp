@@ -107,3 +107,15 @@ STATICFILES_DIRS = [
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Настройки для документов
+MAX_UPLOAD_SIZE = 10 * 1024 * 1024  # 10MB
+ALLOWED_DOCUMENT_EXTENSIONS = ['.doc', '.docx']
+
+# Настройки безопасности файлов
+FILE_UPLOAD_PERMISSIONS = 0o644
+FILE_UPLOAD_MAX_MEMORY_SIZE = MAX_UPLOAD_SIZE
+DATA_UPLOAD_MAX_MEMORY_SIZE = MAX_UPLOAD_SIZE
